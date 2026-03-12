@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performex — Ironman Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────── -->
+  <header class="nav-wrapper">
+    <nav class="nav">
+      <a href="#" class="nav-logo"><img src="header.png" alt="Performex Coaching" class="nav-logo-img"></a>
+    </nav>
+  </header>
+
+  <!-- ─── FIXED CTA ──────────────────────────────────────────── -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-gold cta-fixed">Start free coaching</a>
+
+  <!-- ─── HERO ──────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Ironman Coaching</span>
+      <h1 class="hero-headline">
+        Train smarter.<br />
+        <span class="accent">Race faster.</span><br />
+        Go further.
+      </h1>
+      <p class="hero-sub">
+        <span class="accent">Personalized 1:1 triathlon coaching</span> built to help you perform at your best. Triathlon performance isn't just swim, bike, and run. <span class="accent">Strength training, fueling, hydration, and recovery</span> are all built into your program.
+      </p>
+      <div class="hero-actions">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-gold">Start your journey</a>
+        <a href="#services" class="btn btn-outline">View coaching plans</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img
+        src="Photo Motion Request Mar 6 2026.png"
+        alt="Ironman athlete racing"
+        class="hero-image"
+      />
+      <div class="hero-image-overlay"></div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── STATS / INTRO SECTION ──────────────────────────── -->
+  <section class="stats-bar">
+    <div class="container">
+
+      <!-- Tagline + image row -->
+      <div class="stats-intro-row">
+        <p class="stats-tagline">
+          <span class="stats-tagline-bold">From beginners to seasoned pros, I create custom training plans</span><span class="stats-tagline-light"> tailored to your life to unlock your full potential and succeed on race day.</span>
+        </p>
+        <div class="stats-intro-img">
+          <img src="coaching.JPG" alt="Coaching session" />
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">80+</span>
+          <span class="stat-label">Athletes coached</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">8+</span>
+          <span class="stat-label">Years experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Finish rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10,000+</span>
+          <span class="stat-label">Training hours</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+  <!--
+    Scroll-storytelling section.
+    The inner .about-sticky frame is pinned via position:sticky.
+    JS calculates scroll progress and crossfades content between
+    3 slides. Section height = 400vh so each slide gets ~100vh of scroll.
+  -->
+  <section class="about-story" id="about">
+    <div class="about-sticky">
+
+      <!-- ── Left: text panel ─────────────────────── -->
+      <div class="about-text-panel">
+
+        <div class="about-slide-text" data-slide="0">
+          <span class="section-eyebrow">About your coach</span>
+          <h2 class="section-heading">Hi, I'm <span class="accent">Markus</span></h2>
+          <p class="body-text">
+            I'm an endurance athlete with a Master's degree in Applied Physiology and Kinesiology and a background in competitive swimming and strength and conditioning. Over the years I've raced everything from ultras to Ironman, and I'm constantly chasing the next level of performance.
+          </p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+        </div>
+
+        <div class="about-slide-text" data-slide="1">
+          <span class="section-eyebrow">Coaching</span>
+          <h2 class="section-heading">Science-backed.<br /><span class="accent">Life-proof.</span></h2>
+          <p class="body-text">
+            I work with athletes who want structure, not guesswork. My coaching is built on science-based periodisation, individualised training loads, and a sustainable approach that fits around your life and keeps you healthy.
+          </p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+        </div>
+
+        <div class="about-slide-text" data-slide="2">
+          <span class="section-eyebrow">My philosophy</span>
+          <h2 class="section-heading">The philosophy behind <span class="accent">the training</span></h2>
+          <p class="body-text">
+            I believe great endurance performance comes from consistency, smart training, and fueling the work properly. When those pieces are in place, progress becomes predictable and athletes start realizing what they're truly capable of.
+          </p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+        </div>
+
+        <!-- Progress dots -->
+        <div class="about-progress">
+          <div class="about-prog-dot active"></div>
+          <div class="about-prog-dot"></div>
+          <div class="about-prog-dot"></div>
+        </div>
+
+      </div><!-- /about-text-panel -->
+
+      <!-- ── Right: image panel ─────────────────────── -->
+      <div class="about-image-panel">
+
+        <div class="about-slide-image" data-slide="0">
+          <img
+            src="1.jpeg"
+            alt="Ironman finish line"
+          />
+        </div>
+
+        <div class="about-slide-image" data-slide="1">
+          <img
+            src="2.jpeg"
+            alt="Ironman swim exit"
+          />
+        </div>
+
+        <div class="about-slide-image" data-slide="2">
+          <img
+            src="3.jpeg"
+            alt="Ironman run"
+          />
+        </div>
+
+      </div><!-- /about-image-panel -->
+
+    </div><!-- /about-sticky -->
+  </section>
+
+  <!-- ─── WHAT I OFFER ─────────────────────────────────────── -->
+  <section class="features section-dark" id="features">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-eyebrow light">How it works</span>
+        <h2 class="section-heading light">Everything you need to<br /><span class="accent">reach the finish line</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏃</div>
+          <h3>Personalised Training Plan</h3>
+          <p>Every week is built around your schedule, fitness level, and race goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Data-Driven Analysis</h3>
+          <p>I track your metrics, review your data, and adjust your load to ensure optimal performance gains.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍌</div>
+          <h3>Fueling & Hydration</h3>
+          <p>Training and race-day nutrition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Race-Day Strategy</h3>
+          <p>Detailed race-day execution plans including pacing, nutrition, and mental tactics for your specific event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES / COACHING PLANS ───────────────────────── -->
+  <section class="services section-white" id="services">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-eyebrow">Coaching plans</span>
+        <h2 class="section-heading">Invest in your<br /><span class="accent">best performance</span></h2>
+        <p class="section-sub">All plans include personalized training, direct coach access, and ongoing adjustments. Your first month is on me, <span class="accent">free</span>.</p>
+      </div>
+      <div class="plans-list">
+
+        <div class="plan-row">
+          <div class="plan-row-image">
+            <img src="swim.jpg" alt="Ironman swim start" class="plan-row-img" />
+          </div>
+          <div class="plan-row-content">
+            <span class="plan-price-label">$149 / month</span>
+            <h3 class="plan-row-name">Foundation</h3>
+            <ul class="plan-row-features">
+              <li>Personalized training plan</li>
+              <li>Monthly adjustment</li>
+              <li>Monthly check-in calls</li>
+              <li>Strength recommendations</li>
+            </ul>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
+          </div>
+        </div>
+
+        <div class="plan-row">
+          <div class="plan-row-image">
+            <img src="bike.jpg" alt="Cycling gear" class="plan-row-img" />
+          </div>
+          <div class="plan-row-content">
+            <span class="plan-badge-inline">Most popular</span>
+            <span class="plan-price-label">$199 / month</span>
+            <h3 class="plan-row-name">Performance</h3>
+            <ul class="plan-row-features">
+              <li>Personalized training plan</li>
+              <li>Weekly check-in calls</li>
+              <li>Ongoing adjustments to training plan</li>
+              <li>Swim / Bike / Run form review</li>
+              <li>Nutrition &amp; Hydration guidance</li>
+              <li>Race-day plan</li>
+              <li>Strength plan</li>
+              <li>Recovery plan</li>
+
+            </ul>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─────────────────────────────────────── -->
+  <section class="testimonials section-dark" id="testimonials">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-eyebrow light">Athlete results</span>
+        <h2 class="section-heading light">Real athletes.<br /><span class="accent">Real finishes.</span></h2>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "I've learned more in the past few weeks with Markus than I did in years on my own. His personalized approach and care made all the difference."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <span class="author-name">Eddie</span>
+              <span class="author-detail">Ironman athlete</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card testimonial-featured">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "With the right coaching, I was able to push past my limits. I couldn't have reached my goals without the guidance and support of Markus."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <span class="author-name">Sarah</span>
+              <span class="author-detail">Ironman athlete</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "Markus, I can't tell you how grateful I am for all your guidance and help."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <span class="author-name">Rakesh</span>
+              <span class="author-detail">Ironman athlete</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BANNER ──────────────────────────────────────── -->
+  <section class="cta-banner" id="contact">
+    <div class="cta-banner-bg">
+      <img src="cta-bg.jpg" alt="" class="cta-banner-img" />
+      <div class="cta-banner-overlay"></div>
+    </div>
+    <div class="cta-banner-content">
+      <h2 class="cta-banner-heading">Ready to Achieve Your Goals?</h2>
+      <p class="cta-banner-sub">I'll help you reach new heights and stay ahead of the competition.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-cta-pill">
+        Let's Talk
+        <span class="btn-cta-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="header.png" alt="Performex Coaching" class="footer-logo-img">
+          <p class="footer-tagline">Ironman Coaching for athletes who refuse to settle.</p>
+        </div>
+        <div class="footer-links">
+          <span class="footer-heading">Navigate</span>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Coaching Plans</a></li>
+            <li><a href="#testimonials">Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <span class="footer-heading">Follow</span>
+          <ul>
+            <li><a href="https://www.instagram.com/markus_furst/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.strava.com/athletes/76654224" target="_blank">Strava</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Performex. All rights reserved.</span>
+        <span>Built for champions.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
