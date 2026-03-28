@@ -9,20 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css?v=3" />
-  <!-- Google Ads Conversion Tracking -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18036804143"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-18036804143');
-
-    document.addEventListener('click', function(e) {
-      var link = e.target.closest('a[href*="docs.google.com/forms"]');
-      if (link) {
-        gtag('event', 'conversion', {'send_to': 'AW-18036804143/5OFmCJPerI4cEK-Uz5hD'});
-      }
-    });
+  </script>
+  <!-- Event snippet for Submit lead form conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') { window.location = url; }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18036804143/5OFmCJPerI4cEK-Uz5hD',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+      });
+      return false;
+    }
   </script>
 </head>
 <body>
@@ -35,7 +43,7 @@
   </header>
 
   <!-- ─── FIXED CTA ──────────────────────────────────────────── -->
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-gold cta-fixed">First month free</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn btn-gold cta-fixed">First month free</a>
 
   <!-- ─── HERO ──────────────────────────────────────────────── -->
   <section class="hero" id="hero">
@@ -51,7 +59,7 @@
         <span class="accent">Personalized 1:1 triathlon coaching</span> built to help you perform at your best. Triathlon performance isn't just swim, bike, and run. <span class="accent">Strength training, fueling, hydration, and recovery</span> are all built into your program.
       </p>
       <div class="hero-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-gold">Start your journey</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn btn-gold">Start your journey</a>
         <a href="#services" class="btn btn-outline">View coaching plans</a>
       </div>
     </div>
@@ -125,7 +133,7 @@
           <p class="body-text">
             I'm an endurance athlete with a Master's degree in Applied Physiology and Kinesiology and a background in competitive swimming and strength and conditioning. Over the years I've raced everything from ultras to Ironman, and I'm constantly chasing the next level of performance.
           </p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn btn-dark about-slide-cta">Let's talk</a>
         </div>
 
         <div class="about-slide-text" data-slide="1">
@@ -134,7 +142,7 @@
           <p class="body-text">
             I work with athletes who want structure, not guesswork. My coaching is built on science-based periodisation, individualised training loads, and a sustainable approach that fits around your life and keeps you healthy.
           </p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn btn-dark about-slide-cta">Let's talk</a>
         </div>
 
         <div class="about-slide-text" data-slide="2">
@@ -143,7 +151,7 @@
           <p class="body-text">
             I believe great endurance performance comes from consistency, smart training, and fueling the work properly. When those pieces are in place, progress becomes predictable and athletes start realizing what they're truly capable of.
           </p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn btn-dark about-slide-cta">Let's talk</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn btn-dark about-slide-cta">Let's talk</a>
         </div>
 
         <!-- Progress dots -->
@@ -239,7 +247,7 @@
               <li>Monthly check-in calls</li>
               <li>Strength recommendations</li>
             </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
           </div>
         </div>
 
@@ -262,7 +270,7 @@
               <li>Recovery plan</li>
 
             </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn-plan-cta">Get in touch <span class="btn-plan-arrow">↗</span></a>
           </div>
         </div>
 
@@ -331,7 +339,7 @@
     <div class="cta-banner-content">
       <h2 class="cta-banner-heading">Ready to Achieve Your Goals?</h2>
       <p class="cta-banner-sub">I'll help you reach new heights and stay ahead of the competition.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" class="btn-cta-pill">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header" target="_blank" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSdoW6av-00WSxWzqrdMJCiVKaLa4Nj2jQzpRBhrTXSurNg4Gw/viewform?usp=header')" class="btn-cta-pill">
         Let's Talk
         <span class="btn-cta-arrow">↗</span>
       </a>
