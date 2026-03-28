@@ -185,3 +185,93 @@ fadeEls.forEach(el => observer.observe(el));
   update(); // initial render
 })();
 
+// ─── STATS: count-up animation ────────────────────────────
+(function initCountUp() {
+  const statEls = document.querySelectorAll('.stat-number');
+  if (!statEls.length) return;
+
+  function parsestat(text) {
+    // Extract numeric value, prefix, suffix
+    const clean = text.replace(/,/g, '');
+    const match = clean.match(/^([^\d]*)(\d+)([^\d]*)$/);
+    if (!match) return null;
+    return { prefix: match[1], value: parseInt(match[2], 10), suffix: match[3] };
+  }
+
+  function formatNumber(n) {
+    return n >= 1000 ? n.toLocaleString('en-US') : String(n);
+  }
+
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function countUp(el, from, to, prefix, suffix, duration) {
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(from + (to - from) * easeOutQuart(progress));
+      el.textContent = prefix + formatNumber(current) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const parsed = parsestat(el.dataset.original);
+      if (!parsed) return;
+      const delay = parseInt(el.closest('[data-delay]')?.dataset.delay || 0);
+      const duration = 1200 - delay;
+      setTimeout(() => countUp(el, 0, parsed.value, parsed.prefix, parsed.suffix, duration), delay);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+
+  statEls.forEach(el => {
+    el.dataset.original = el.textContent.trim();
+    countObserver.observe(el);
+  });
+})();
+
+// ─── HERO HEADLINE: letter-by-letter pop animation ────────
+(function initHeadlineLetters() {
+  const headline = document.querySelector('.hero-headline');
+  if (!headline) return;
+
+  let charIndex = 0;
+  const BASE_DELAY = 150; // ms — start shortly after eyebrow
+  const PER_CHAR   = 14;  // ms between each letter
+
+  function wrapTextNode(textNode) {
+    const raw  = textNode.textContent.replace(/\s*\n\s*/g, '');
+    if (!raw) { textNode.textContent = ''; return; }
+
+    const frag = document.createDocumentFragment();
+    for (const ch of raw) {
+      const span = document.createElement('span');
+      span.className = 'hero-char';
+      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      span.style.animationDelay = `${BASE_DELAY + charIndex * PER_CHAR}ms`;
+      charIndex++;
+      frag.appendChild(span);
+    }
+    textNode.parentNode.replaceChild(frag, textNode);
+  }
+
+  Array.from(headline.childNodes).forEach(child => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      wrapTextNode(child);
+    } else if (child.nodeName === 'SPAN') {
+      // accent span — wrap its inner text chars too
+      Array.from(child.childNodes).forEach(inner => {
+        if (inner.nodeType === Node.TEXT_NODE) wrapTextNode(inner);
+      });
+    }
+    // BR nodes: leave as-is
+  });
+})();
+

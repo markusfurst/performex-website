@@ -240,6 +240,35 @@ ul { list-style: none; }
   transition: all 0.3s;
 }
 
+/* ─── HERO APPEAR ANIMATION ─────────────────────────────── */
+@keyframes hero-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes letter-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-char {
+  display: inline-block;
+  opacity: 0;
+  animation: letter-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* ─── HERO ───────────────────────────────────────────────── */
 .hero {
   position: relative;
@@ -278,6 +307,23 @@ ul { list-style: none; }
   margin-bottom: 24px;
   padding-left: 32px;
   position: relative;
+  animation: eyebrow-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+@keyframes eyebrow-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.04em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.18em;
+  }
+}
+
+@keyframes line-draw {
+  from { width: 0; }
+  to   { width: 20px; }
 }
 
 .hero-eyebrow::before {
@@ -288,6 +334,7 @@ ul { list-style: none; }
   transform: translateY(-50%);
   width: 20px;
   height: 2px;
+  animation: line-draw 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
   background: var(--gold);
 }
 
@@ -307,12 +354,14 @@ ul { list-style: none; }
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 44px;
   max-width: 480px;
+  animation: hero-appear 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.72s both;
 }
 
 .hero-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  animation: hero-appear 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
 }
 
 .hero-image-wrap {
@@ -328,6 +377,7 @@ ul { list-style: none; }
   object-position: center center;
   opacity: 0.75;
   filter: grayscale(15%);
+  animation: hero-appear 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0s both;
 }
 
 .hero-image-overlay {
