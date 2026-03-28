@@ -9,6 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css?v=3" />
+  <!-- Google Ads Conversion Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18036804143"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18036804143');
+
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href*="docs.google.com/forms"]');
+      if (link) {
+        gtag('event', 'conversion', {'send_to': 'AW-18036804143/5OFmCJPerI4cEK-Uz5hD'});
+      }
+    });
+  </script>
 </head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18036804143"></script>
