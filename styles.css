@@ -194,6 +194,7 @@ ul { list-style: none; }
 .nav-logo {
   display: flex;
   align-items: center;
+  margin-left: -14px;
 }
 
 .nav-logo-img {
