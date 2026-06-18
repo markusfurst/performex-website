@@ -186,15 +186,13 @@ ul { list-style: none; }
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: var(--container);
-  margin: 0 auto;
+  justify-content: flex-start;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  margin-left: -14px;
+  margin-left: -16px;
 }
 
 .nav-logo-img {
