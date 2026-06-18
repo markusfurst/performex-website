@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Sweat Rate Lab — Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=1">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap-wide">
+
+  <nav class="tool-switch" aria-label="Switch tool" style="max-width:560px;">
+    <a href="tool-in-workout.html">In-Workout</a>
+    <a href="tool-post-workout.html">Post-Workout</a>
+    <a href="tool-sweat-rate.html" class="active">Sweat Rate</a>
+  </nav>
+
+  <span class="eyebrow">Field test</span>
+  <h1 class="tool-title">Sweat Rate Lab</h1>
+  <p class="tool-sub">Weigh in, train, weigh out. This tells you fluid lost per hour and how much to drink to stay ahead of it.</p>
+
+  <!-- PROTOCOL -->
+  <details class="proto card" style="padding:0;">
+    <summary style="padding:18px;">How to run the test properly <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
+    <div class="body" style="padding:0 18px 20px;">
+      <div class="three">
+        <div class="c"><div class="k">Cool</div><div class="v">Early-morning, lower temps</div></div>
+        <div class="c"><div class="k">Hot</div><div class="v">Hottest part of the day</div></div>
+        <div class="c"><div class="k">Typical</div><div class="v">Your normal training conditions</div></div>
+      </div>
+      <ol>
+        <li><b>Test three times</b> across the conditions above. Keep effort in <b>Zone 2</b> and duration similar each time so the results compare cleanly.</li>
+        <li><b>Weigh in with no clothes on</b>, twice for accuracy. That's your <b>before</b> weight.</li>
+        <li><b>Train ~60 minutes</b> continuous (running is ideal). Strict version: no fluid or food. If you do drink, log the ounces so it's added back in.</li>
+        <li><b>Dry off fully with a towel and then weigh yourself</b>, twice again. That's your <b>after</b> weight.</li>
+        <li><b>Log the conditions</b>: temperature, humidity, and workout type, so you can see how your rate shifts with heat.</li>
+      </ol>
+    </div>
+  </details>
+
+  <div class="lab">
+    <!-- INPUT -->
+    <div class="panel">
+      <div class="panel-h">
+        <h2>Your test</h2>
+        <span class="hint">Numbers update live</span>
+      </div>
+      <div class="panel-b">
+        <div class="field">
+          <label for="lbl">Test label <span class="opt">(optional)</span></label>
+          <input type="text" id="lbl" placeholder="e.g. Hot midday Z2 run">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="pre">Weight before</label>
+            <div class="inpwrap"><input type="number" id="pre" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit">lb</span></div>
+          </div>
+          <div class="field">
+            <label for="post">Weight after</label>
+            <div class="inpwrap"><input type="number" id="post" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit">lb</span></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="dur">Session duration</label>
+            <div class="inpwrap"><input type="number" id="dur" inputmode="numeric" step="1" placeholder="60"><span class="unit">min</span></div>
+          </div>
+          <div class="field">
+            <label for="fluid">Fluid drunk <span class="opt">(optional)</span></label>
+            <div class="inpwrap"><input type="number" id="fluid" inputmode="decimal" step="1" placeholder="0"><span class="unit">oz</span></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="temp">Temperature <span class="opt">(optional)</span></label>
+            <div class="inpwrap"><input type="number" id="temp" inputmode="numeric" placeholder="—"><span class="unit">°F</span></div>
+          </div>
+          <div class="field">
+            <label for="hum">Humidity <span class="opt">(optional)</span></label>
+            <div class="inpwrap"><input type="number" id="hum" inputmode="numeric" placeholder="—"><span class="unit">%</span></div>
+          </div>
+        </div>
+        <div class="note ok" id="note">Enter weight before, weight after, and duration to see your rate.</div>
+        <div class="actions" style="margin-top:18px;">
+          <button class="btn-primary" id="save">Save to log</button>
+          <button class="btn-ghost" id="clear">Clear fields</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="panel">
+      <div class="panel-h"><h2>Sweat rate</h2><span class="hint">per hour</span></div>
+      <div class="panel-b">
+        <div class="lab-result">
+          <div class="gauge">
+            <div class="ticks">
+              <span style="bottom:100%">2.5</span>
+              <span style="bottom:72%">1.8</span>
+              <span style="bottom:48%">1.2</span>
+              <span style="bottom:32%">0.8</span>
+              <span style="bottom:2%">0</span>
+            </div>
+            <div class="fill" id="fill"><div class="wave"></div></div>
+          </div>
+          <div class="readout">
+            <div class="bignum" id="big">—<span>L/hr</span></div>
+            <div class="band" id="band"><span class="dot"></span>Awaiting data</div>
+            <div class="alt" id="alt" style="display:none">
+              <div><b id="ozhr">—</b>oz / hr</div>
+              <div><b id="mlhr">—</b>mL / hr</div>
+              <div><b id="lostpct">—</b>body wt lost</div>
+            </div>
+          </div>
+        </div>
+        <div class="rehydrate" id="rehy" style="display:none">
+          <h3>Drink target while training</h3>
+          <p>Aim to take in <b id="sip">—</b> per hour in similar conditions, roughly 50-80% of what you lose. Dial it in over a few sessions and keep total loss under ~2-3% of body weight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOG -->
+  <section class="block">
+    <div class="block-h">
+      <h2>Your tests</h2>
+      <span class="lbl" id="logcount">0 tests logged</span>
+    </div>
+    <div class="logwrap">
+      <table id="logtable">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th class="num">Conditions</th>
+            <th class="num">Duration</th>
+            <th class="num">Rate L/hr</th>
+            <th class="num">oz/hr</th>
+            <th>Band</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="logbody"></tbody>
+      </table>
+      <div class="log-empty" id="logempty">No tests saved yet. Run one above and hit <b>Save to log</b>.</div>
+    </div>
+    <div class="log-actions">
+      <button class="btn-ghost" id="export">Export CSV</button>
+      <button class="btn-ghost" id="print">Print / Save PDF</button>
+      <button class="btn-ghost" id="wipe">Clear log</button>
+    </div>
+  </section>
+
+  <footer class="tool-foot">
+    <p>Sweat rate is estimated from body-weight change (1&nbsp;lb of loss ≈ 0.45&nbsp;L of fluid), plus any fluid you drank during the session, scaled to an hourly rate. It's a strong starting point for planning hydration, not a medical measurement. Individualise it in training and adjust for longer or harder efforts.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const LB_TO_L = 0.453592;      // 1 lb of body-mass loss ≈ 0.4536 L fluid
+  const OZ_TO_L = 0.0295735;
+  const GAUGE_MAX = 2.5;         // L/hr at top of gauge
+
+  // Brand-aligned intensity ramp (low → very high)
+  const bands = [
+    {min:0,    label:"Low",       color:"#5bbf8a", deep:"#7fd3a6"},
+    {min:0.8,  label:"Moderate",  color:"#f5b614", deep:"#f7c948"},
+    {min:1.2,  label:"High",      color:"#e8893a", deep:"#f0a55f"},
+    {min:1.8,  label:"Very high", color:"#e0514f", deep:"#ec7472"}
+  ];
+  function bandFor(r){let b=bands[0];for(const x of bands){if(r>=x.min)b=x;}return b;}
+
+  const ins = ["pre","post","dur","fluid","temp","hum","lbl"].map($);
+  let tests = [];
+
+  function val(id){const v=parseFloat($(id).value);return isNaN(v)?null:v;}
+
+  function compute(){
+    const pre=val("pre"), post=val("post"), dur=val("dur"), fluid=val("fluid")||0;
+    const note=$("note");
+
+    if(pre===null||post===null||dur===null){
+      note.textContent="Enter weight before, weight after, and duration to see your rate.";
+      note.className="note ok"; renderEmpty(); return null;
+    }
+    if(dur<=0){ note.textContent="Duration needs to be more than zero minutes."; note.className="note"; renderEmpty(); return null; }
+    if(post>pre && fluid===0){
+      note.textContent="You weigh more after than before with no fluid logged, so double-check the readings or add the fluid you drank.";
+      note.className="note"; renderEmpty(); return null;
+    }
+
+    const lostLb = pre - post;
+    const lostL  = lostLb * LB_TO_L;
+    const drankL = fluid * OZ_TO_L;
+    const totalL = lostL + drankL;             // true sweat loss
+    const rate   = totalL / (dur/60);          // L/hr
+    const pctLost = pre>0 ? (lostLb/pre)*100 : 0;
+
+    note.textContent="Looking good — save it to your log to compare across conditions.";
+    note.className="note ok";
+    render({rate, ozhr:rate/OZ_TO_L, mlhr:rate*1000, pctLost});
+    return {rate, pctLost, dur, pre, post, fluid, temp:val("temp"), hum:val("hum"), lbl:$("lbl").value.trim()};
+  }
+
+  function renderEmpty(){
+    $("fill").style.height="0%";
+    $("big").innerHTML='—<span>L/hr</span>';
+    const band=$("band"); band.style.background="rgba(245,182,20,.12)"; band.style.color="#f5b614";
+    band.innerHTML='<span class="dot"></span>Awaiting data';
+    $("alt").style.display="none"; $("rehy").style.display="none";
+  }
+
+  function render(d){
+    const b=bandFor(d.rate);
+    const pct=Math.max(2,Math.min(100,(d.rate/GAUGE_MAX)*100));
+    const fill=$("fill");
+    fill.style.height=pct+"%";
+    fill.style.background=`linear-gradient(180deg, ${b.color}, ${b.color})`;
+
+    $("big").innerHTML=d.rate.toFixed(2)+'<span>L/hr</span>';
+    const band=$("band");
+    band.style.background=hexA(b.color,.16); band.style.color=b.deep;
+    band.innerHTML='<span class="dot"></span>'+b.label;
+
+    $("alt").style.display="flex";
+    $("ozhr").textContent=Math.round(d.ozhr);
+    $("mlhr").textContent=Math.round(d.mlhr);
+    $("lostpct").textContent=d.pctLost.toFixed(1)+"%";
+
+    const lo=Math.round(d.ozhr*0.5), hi=Math.round(d.ozhr*0.8);
+    $("rehy").style.display="block";
+    $("sip").textContent=lo+"–"+hi+" oz";
+  }
+
+  function hexA(hex,a){const n=parseInt(hex.slice(1),16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;}
+
+  ins.forEach(el=>el.addEventListener("input",compute));
+
+  // ---- log ----
+  $("save").addEventListener("click",()=>{
+    const r=compute();
+    if(!r){$("note").className="note";return;}
+    tests.push(r); renderLog();
+    const note=$("note"); note.textContent="Saved. "+tests.length+" test"+(tests.length>1?"s":"")+" in your log."; note.className="note ok";
+  });
+
+  $("clear").addEventListener("click",()=>{
+    ["lbl","pre","post","dur","fluid","temp","hum"].forEach(id=>$(id).value="");
+    compute(); $("pre").focus();
+  });
+
+  function condStr(t){
+    const parts=[];
+    if(t.temp!==null) parts.push(t.temp+"°F");
+    if(t.hum!==null) parts.push(t.hum+"%");
+    return parts.length?parts.join(" · "):"—";
+  }
+
+  function renderLog(){
+    const body=$("logbody"), empty=$("logempty");
+    body.innerHTML="";
+    $("logcount").textContent=tests.length+" test"+(tests.length===1?"":"s")+" logged";
+    if(!tests.length){empty.style.display="block";return;}
+    empty.style.display="none";
+
+    tests.forEach((t,i)=>{
+      const b=bandFor(t.rate);
+      const tr=document.createElement("tr");
+      tr.innerHTML=
+        `<td>${escapeHtml(t.lbl||("Test "+(i+1)))}</td>`+
+        `<td class="num">${condStr(t)}</td>`+
+        `<td class="num">${t.dur} min</td>`+
+        `<td class="num">${t.rate.toFixed(2)}</td>`+
+        `<td class="num">${Math.round(t.rate/OZ_TO_L)}</td>`+
+        `<td><span class="tag-band" style="background:${hexA(b.color,.16)};color:${b.deep}">${b.label}</span></td>`+
+        `<td class="num"><button class="del" data-i="${i}" title="Remove" aria-label="Remove test">×</button></td>`;
+      body.appendChild(tr);
+    });
+
+    if(tests.length>1){
+      const avg=tests.reduce((s,t)=>s+t.rate,0)/tests.length;
+      const b=bandFor(avg);
+      const tr=document.createElement("tr"); tr.className="avg";
+      tr.innerHTML=
+        `<td>Average</td><td class="num"></td><td class="num"></td>`+
+        `<td class="num">${avg.toFixed(2)}</td>`+
+        `<td class="num">${Math.round(avg/OZ_TO_L)}</td>`+
+        `<td><span class="tag-band" style="background:${hexA(b.color,.16)};color:${b.deep}">${b.label}</span></td><td></td>`;
+      body.appendChild(tr);
+    }
+
+    body.querySelectorAll(".del").forEach(btn=>{
+      btn.addEventListener("click",()=>{tests.splice(+btn.dataset.i,1);renderLog();});
+    });
+  }
+
+  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+  $("export").addEventListener("click",()=>{
+    if(!tests.length){alert("Nothing to export yet. Save a test first.");return;}
+    const head=["Test","Temp_F","Humidity_%","Duration_min","Pre_lb","Post_lb","Fluid_oz","SweatRate_L_hr","SweatRate_oz_hr","BodyWtLost_%","Band"];
+    const rows=tests.map((t,i)=>[
+      `"${(t.lbl||("Test "+(i+1))).replace(/"/g,'""')}"`,
+      t.temp??"", t.hum??"", t.dur, t.pre, t.post, t.fluid,
+      t.rate.toFixed(2), Math.round(t.rate/OZ_TO_L), t.pctLost.toFixed(1), bandFor(t.rate).label
+    ].join(","));
+    const csv=[head.join(","),...rows].join("\n");
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+    a.download="sweat-rate-tests.csv"; a.click(); URL.revokeObjectURL(a.href);
+  });
+
+  $("print").addEventListener("click",()=>window.print());
+  $("wipe").addEventListener("click",()=>{if(tests.length&&confirm("Clear all saved tests?")){tests=[];renderLog();}});
+
+  renderLog(); renderEmpty();
+})();
+</script>
+</body>
+</html>

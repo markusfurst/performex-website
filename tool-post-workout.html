@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Post-Workout Carbs — Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=1">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <nav class="tool-switch" aria-label="Switch tool">
+    <a href="tool-in-workout.html">In-Workout</a>
+    <a href="tool-post-workout.html" class="active">Post-Workout</a>
+    <a href="tool-sweat-rate.html">Sweat Rate</a>
+  </nav>
+
+  <span class="eyebrow">After training</span>
+  <h1 class="tool-title">Post-Workout Carb Calculator</h1>
+  <p class="tool-sub">Drink within 10 minutes of finishing your workout to kickstart recovery.</p>
+
+  <div class="card">
+    <!-- Duration -->
+    <div class="field">
+      <label>Workout duration</label>
+      <select id="duration">
+        <option value="">Select duration</option>
+        <option value="0-45">Up to 45 min</option>
+        <option value="46-75">46 – 75 min</option>
+        <option value="76-120">76 – 120 min</option>
+        <option value="121-180">121 – 180 min</option>
+        <option value="181-240">181 – 240 min</option>
+        <option value="240+">More than 240 min</option>
+      </select>
+    </div>
+
+    <!-- IF -->
+    <div class="field">
+      <label>Intensity Factor (IF) <span class="opt">from TrainingPeaks</span></label>
+      <select id="if_val">
+        <option value="">Select IF</option>
+        <option value="easy">Below 0.71</option>
+        <option value="endurance">0.71 – 0.77</option>
+        <option value="tempo">0.78 – 0.85</option>
+        <option value="threshold">Above 0.85</option>
+      </select>
+      <div class="coach" style="margin-top:14px;margin-bottom:0;">
+        <div class="tag">Where to find IF</div>
+        <p>Open your workout in TrainingPeaks and check the summary. Use the IF from the TSS type that matches your session:<br><br>
+        <b>TSS</b> — Bike with a power meter<br>
+        <b>rTSS</b> — Any run workout (flat or hilly)<br>
+        <b>hrTSS</b> — Bike without a power meter · Treadmill runs · Hot-weather runs where pace doesn't reflect true effort</p>
+      </div>
+    </div>
+
+    <!-- Body Weight -->
+    <div class="field">
+      <label>Body weight</label>
+      <div class="input-row">
+        <input type="number" id="weight" placeholder="e.g. 75" min="30" max="250" inputmode="decimal">
+        <div class="toggle">
+          <button class="active" id="btn-kg" type="button" onclick="setUnit('kg')">kg</button>
+          <button id="btn-lbs" type="button" onclick="setUnit('lbs')">lbs</button>
+        </div>
+      </div>
+      <span class="error-msg" id="weight-error">Please enter a valid body weight.</span>
+    </div>
+  </div>
+
+  <button class="btn-primary" onclick="calculate()" style="margin-bottom:16px;">Calculate</button>
+
+  <!-- Result -->
+  <div id="result" style="display:none;">
+    <div class="result-cards">
+      <div class="r-card highlight">
+        <div class="r-label">Your post-workout target</div>
+        <div class="r-value" id="res-grams">—</div>
+        <div class="r-sub" id="res-weight-label">based on your body weight</div>
+      </div>
+    </div>
+    <div class="coach" style="border-left-color:var(--gold);">
+      <div class="tag">Timing</div>
+      <p><b>Drink this within 10 minutes</b> of finishing your workout to kickstart glycogen resynthesis. Ideally liquid carbs — a recovery mix, fruit juice, or chocolate milk. Follow with a full meal within 2 hours.</p>
+    </div>
+  </div>
+
+  <footer class="tool-foot">
+    <p><b>About IF:</b> Intensity Factor reflects how hard your workout was relative to your threshold. For cycling it's derived from power (TSS); for running, from pace and elevation (rTSS). If you train with heart rate only, use the IF from hrTSS — ideal for cycling without a power meter, treadmill runs, or hot-weather running where pace doesn't reflect true effort.</p>
+    <p><b>Important:</b> IF is only accurate if your thresholds are set correctly in TrainingPeaks. Keep your threshold pace (run), FTP (bike power), and threshold heart rate up to date — outdated thresholds will skew your IF and your carb target.</p>
+    <p><b>Note:</b> These recommendations are for carbohydrate intake only and do not account for protein or total daily nutrition needs.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+<script>
+  // Lookup table: [duration][if_bucket] = [lo_gkg, hi_gkg]
+  const TABLE = {
+    "0-45":    { easy: [0.3,0.4], endurance: [0.4,0.5], tempo: [0.5,0.6], threshold: [0.5,0.7] },
+    "46-75":   { easy: [0.3,0.4], endurance: [0.4,0.5], tempo: [0.5,0.6], threshold: [0.6,0.7] },
+    "76-120":  { easy: [0.4,0.5], endurance: [0.5,0.6], tempo: [0.6,0.7], threshold: [0.7,0.8] },
+    "121-180": { easy: [0.8,0.9], endurance: [0.9,1.0], tempo: [1.0,1.1], threshold: [1.1,1.2] },
+    "181-240": { easy: [0.8,0.9], endurance: [1.0,1.1], tempo: [1.1,1.2], threshold: [1.2,null] },
+    "240+":    { easy: [0.8,0.9], endurance: [1.0,1.1], tempo: [1.1,1.2], threshold: [1.2,null] },
+  };
+
+  let unit = 'kg';
+
+  function setUnit(u) {
+    unit = u;
+    document.getElementById('btn-kg').classList.toggle('active', u === 'kg');
+    document.getElementById('btn-lbs').classList.toggle('active', u === 'lbs');
+    document.getElementById('weight').placeholder = u === 'kg' ? 'e.g. 75' : 'e.g. 165';
+  }
+
+  function fmt(n) { return Math.round(n); }
+
+  function calculate() {
+    const duration = document.getElementById('duration').value;
+    const if_val   = document.getElementById('if_val').value;
+    const weightRaw = parseFloat(document.getElementById('weight').value);
+    const errEl = document.getElementById('weight-error');
+
+    let valid = true;
+
+    if (!duration) {
+      errEl.textContent = 'Please select a workout duration.';
+      errEl.style.display = 'block';
+      valid = false;
+    } else if (!if_val) {
+      errEl.textContent = 'Please select your Intensity Factor (IF).';
+      errEl.style.display = 'block';
+      valid = false;
+    } else if (isNaN(weightRaw) || weightRaw <= 0) {
+      errEl.textContent = 'Please enter your body weight.';
+      errEl.style.display = 'block';
+      valid = false;
+    } else {
+      errEl.style.display = 'none';
+    }
+
+    if (!valid) return;
+
+    const weightKg = unit === 'kg' ? weightRaw : weightRaw / 2.20462;
+
+    const [lo, hi] = TABLE[duration][if_val];
+
+    const loG  = lo  * weightKg;
+    const hiG  = hi  ? hi * weightKg : null;
+
+    document.getElementById('res-grams').textContent = hi
+      ? `${fmt(loG)}–${fmt(hiG)}g`
+      : `${fmt(loG)}g`;
+    document.getElementById('res-weight-label').textContent =
+      `based on ${unit === 'kg' ? weightRaw + ' kg' : weightRaw + ' lbs'} body weight`;
+
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>

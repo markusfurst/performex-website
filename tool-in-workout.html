@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>In-Workout Fueling — Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=1">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <nav class="tool-switch" aria-label="Switch tool">
+    <a href="tool-in-workout.html" class="active">In-Workout</a>
+    <a href="tool-post-workout.html">Post-Workout</a>
+    <a href="tool-sweat-rate.html">Sweat Rate</a>
+  </nav>
+
+  <span class="eyebrow">During training</span>
+  <h1 class="tool-title">In-Workout Carb Calculator</h1>
+  <p class="tool-sub">Pick your session, get your carb-per-hour target, scaled to your bodyweight. Fuel for the work, not just the clock.</p>
+
+  <!-- Inputs -->
+  <div class="card">
+    <div class="field">
+      <label>Body weight</label>
+      <div class="input-row">
+        <input type="number" id="weight" inputmode="decimal" placeholder="e.g. 75" min="1" step="0.1">
+        <div class="toggle">
+          <button id="kgBtn" class="active" type="button">kg</button>
+          <button id="lbsBtn" type="button">lbs</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Session duration</label>
+      <div class="input-row">
+        <input type="number" id="hours" inputmode="numeric" placeholder="0" min="0" step="1">
+        <div class="dur-suffix">hr</div>
+        <input type="number" id="minutes" inputmode="numeric" placeholder="0" min="0" max="59" step="1">
+        <div class="dur-suffix">min</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Session type</label>
+      <select id="session">
+        <option value="" disabled selected>Choose a session...</option>
+        <option value="easy">Easy (Z1-Z2)</option>
+        <option value="long">Long ride / long run (easy-moderate, not purely easy)</option>
+        <option value="modhard">Hard Workouts</option>
+        <option value="advanced">Advanced fueling experimentation</option>
+        <option value="race">Racing</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div id="result" class="result empty">
+    <div class="msg">Enter your weight, duration, and session type to see your target.</div>
+  </div>
+
+  <!-- Coach note -->
+  <div class="coach">
+    <div class="tag">Coach's note</div>
+    <p><b>More is almost always better. When you're stuck between numbers, round up.</b> I average ~150 g/hr racing and on long prep sessions, but that took months to tolerate. Your gut is trainable: practice your fueling in training (GI training) and build the numbers up gradually before you push them in a race.</p>
+  </div>
+
+  <!-- Reference -->
+  <details class="ref card">
+    <summary>Fueling guidelines &amp; caveats
+      <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </summary>
+    <div class="g">
+
+      <div class="g-item">
+        <div class="g-num">Guideline 1</div>
+        <div class="g-title">Easy training under 1 hour (Z1-Z2)</div>
+        <div class="g-body"><span class="g-target">No mid-exercise carbs required.</span> A gel is reasonable if you feel depleted or want to support recovery ahead of a heavy training day.</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 2</div>
+        <div class="g-title">Easy training 1-2 hours (Z1-Z2)</div>
+        <div class="g-body">Aim for <span class="g-target">45-60 g/hr</span> (reference athlete). Supports recovery and adaptation without negatively impacting fat oxidation.</div>
+        <div class="g-cav"><span class="lbl">Caveat:</span> Female athletes should not underfuel. Low energy availability can disrupt the endocrine system and lead to long-term health and performance issues.</div>
+        <div class="g-cav"><span class="lbl">Caveat 2:</span> Athletes with a history of eating disorders or related health issues should aim for at least 60-90 g/hr on all sessions over 1 hour, regardless of intensity. Accidental underfueling carries a much higher cost in this population.</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 3</div>
+        <div class="g-title">Easy training over 2 hours (Z1-Z2)</div>
+        <div class="g-body">Aim for <span class="g-target">60-75 g/hr</span> (reference athlete). Many can "get through" these with less, but the recovery cost is rarely worth it. As duration climbs, so does the demand on recovery and adaptation.</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 4</div>
+        <div class="g-title">Easy-moderate sessions that aren't purely easy</div>
+        <div class="g-body">Longer rides, long runs, many marathon workouts. Aim for <span class="g-target">75-90 g/hr</span> (reference athlete), regardless of duration. Most long runs aren't truly easy. Higher intake improves performance, supports adaptation, and gives valuable gut training.</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 5</div>
+        <div class="g-title">Hard workouts under 90 min (Z3+)</div>
+        <div class="g-body">Aim for <span class="g-target">~60 g/hr</span> (reference athlete). Covers most mid-week workouts where the goal is adaptation, not just survival. No fat-oxidation benefit to underfueling short, hard sessions.</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 6</div>
+        <div class="g-title">Hard workouts over 90 min (Z3+)</div>
+        <div class="g-body">Aim for <span class="g-target">75-90 g/hr</span> (reference athlete).</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 7</div>
+        <div class="g-title">Advanced fueling experimentation</div>
+        <div class="g-body">Once comfortable at the standard high-carb range, experiment with <span class="g-target">105-120+ g/hr</span> (reference athlete) on hard sessions over 90 min or easy/moderate sessions over 2 hours. Going higher tends to favor faster athletes with higher outputs, but the standard range works for almost everyone and is what most people mean by "high-carb fueling."</div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-num">Guideline 8</div>
+        <div class="g-title">Racing</div>
+        <div class="g-body">Apply Guidelines 6 &amp; 7 based on effort and duration. GI issues in races usually come from pushing high carb without practice, or holding high intake when effort drops (long downhills, late-race fatigue). <b>Fuel for effort, not just time.</b></div>
+        <div class="g-cav"><span class="lbl">Caveat:</span> GI issues can also come from doing extreme or unfamiliar things during the carb-load period. Don't overdo your diet race week. Reduced training volume already boosts glycogen storage if you're eating normal, satisfying meals.</div>
+      </div>
+
+      <div class="scalenote"><b>How the targets are calculated:</b> the ranges above are written for a reference ~70&nbsp;kg athlete. The calculator anchors them to your 1&nbsp;g/kg/hr rule and scales each band to your actual bodyweight, so the recommendation tracks your size instead of a fixed gram number.</div>
+
+    </div>
+  </details>
+
+  <footer class="tool-foot">
+    <p>1 g/kg/hr is the baseline. Session type sets a band around it, and the band scales with your bodyweight.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var unit = 'kg';
+  var weightEl = document.getElementById('weight');
+  var hoursEl  = document.getElementById('hours');
+  var minsEl   = document.getElementById('minutes');
+  var sessEl   = document.getElementById('session');
+  var kgBtn    = document.getElementById('kgBtn');
+  var lbsBtn   = document.getElementById('lbsBtn');
+  var resultEl = document.getElementById('result');
+
+  kgBtn.addEventListener('click', function(){ unit='kg'; kgBtn.classList.add('active'); lbsBtn.classList.remove('active'); render(); });
+  lbsBtn.addEventListener('click', function(){ unit='lbs'; lbsBtn.classList.add('active'); kgBtn.classList.remove('active'); render(); });
+  [weightEl,hoursEl,minsEl,sessEl].forEach(function(el){ el.addEventListener('input', render); el.addEventListener('change', render); });
+
+  // Multipliers are x times the 1 g/kg/hr baseline. Calibrated so a ~70kg
+  // reference athlete reproduces the written guideline numbers.
+  function getBand(session, durMin){
+    switch(session){
+      case 'easy':
+        if(durMin < 60) return {none:true, label:'Easy · under 1 hr',
+          ctx:'<b>No mid-workout carbs required.</b> A gel is still reasonable if you feel depleted or want to top up recovery before a heavy training day.'};
+        if(durMin <= 120) return {lo:0.65, hi:0.85, label:'Easy · 1-2 hr',
+          ctx:'Supports recovery and adaptation without blunting fat oxidation.',
+          caveat:'Don\'t underfuel. For female athletes and anyone with a history of disordered eating, hold at least 60-90 g/hr on any session over 1 hr. Accidental underfueling costs more than overfueling.'};
+        return {lo:0.85, hi:1.05, label:'Easy · over 2 hr',
+          ctx:'You can get through these on less, but the recovery cost is rarely worth it. The longer you go, the more recovery and adaptation demand fuel.',
+          caveat:'History of disordered eating: hold at least 60-90 g/hr on any session over 1 hr, regardless of intensity.'};
+      case 'long':
+        return {lo:1.05, hi:1.30, label:'Long ride / long run',
+          ctx:'Most long sessions aren\'t truly easy. This range improves performance, supports adaptation, and is valuable gut training. <b>Aim toward the top end.</b>'};
+      case 'modhard':
+        if(durMin < 90) return {lo:0.85, hi:1.00, label:'Hard workout · under 90 min',
+          ctx:'Goal here is adaptation, not just surviving the session. No fat-oxidation benefit to underfueling a short, hard effort. <b>Aim toward the top of the band</b> (around your 1:1 bodyweight number).'};
+        return {lo:1.05, hi:1.30, label:'Hard workout · 90 min+',
+          ctx:'Sustained hard work that sits at and above your 1:1 baseline. <b>Aim toward the top of the range.</b>'};
+      case 'advanced':
+        return {lo:1.50, hi:1.75, plus:true, label:'Advanced fueling experimentation',
+          ctx:'For athletes already comfortable at the standard high-carb range, on hard sessions over 90 min or easy/moderate sessions over 2 hr. Favors faster athletes with higher outputs. <b>Only push this once your gut is trained.</b>'};
+      case 'race':
+        return {lo:1.05, hi:1.30, push:1.50, label:'Racing',
+          ctx:'Sits at and above your 1:1 baseline. Well-practiced athletes push even higher (1.5x+ bodyweight) on harder, longer efforts. <b>Fuel for effort, not just time.</b> Ease off on long downhills and late-race lulls, and don\'t try anything new during race-week carb-loading.'};
+      default: return null;
+    }
+  }
+
+  function toKg(val){ return unit==='kg' ? val : val/2.20462; }
+  function r5(x){ return Math.round(x/5)*5; }
+
+  function render(){
+    var w = parseFloat(weightEl.value);
+    var h = parseInt(hoursEl.value||'0',10);
+    var m = parseInt(minsEl.value||'0',10);
+    var session = sessEl.value;
+    var durMin = (isNaN(h)?0:h)*60 + (isNaN(m)?0:m);
+
+    if(!w || w<=0 || durMin<=0 || !session){
+      resultEl.className = 'result empty';
+      resultEl.innerHTML = '<div class="msg">Enter your weight, duration, and session type to see your target.</div>';
+      return;
+    }
+
+    var b = getBand(session, durMin);
+    var kg = toKg(w);
+    var baseline = Math.round(kg); // 1 g/kg/hr
+    var durHrs = durMin/60;
+    var durLabel = ((h>0? h+' hr ' : '') + (m>0? m+' min' : (h>0?'':'0 min'))).trim();
+
+    if(b.none){
+      resultEl.className = 'result';
+      resultEl.innerHTML =
+        '<div class="r-eyebrow">'+b.label+'</div>'+
+        '<div class="headline"><span class="num">0</span><span class="unit">g/hr</span></div>'+
+        '<div class="total">Optional · '+durLabel+'</div>'+
+        '<div class="baseline">Your 1 g/kg/hr baseline: <b>'+baseline+' g/hr</b>. Handy if you choose to fuel anyway.</div>'+
+        '<div class="ctx">'+b.ctx+'</div>';
+      return;
+    }
+
+    var lo = r5(kg*b.lo);
+    var hi = r5(kg*b.hi);
+    if(lo===hi) hi = lo+5;
+    var rateLabel = lo+'-'+hi + (b.plus?'+':'');
+
+    var totalLo = Math.round(lo*durHrs);
+    var totalHi = Math.round(hi*durHrs);
+    var totalLabel = totalLo+'-'+totalHi + (b.plus?'+':'');
+
+    var pushHtml = '';
+    if(b.push){
+      var pushVal = r5(kg*b.push);
+      pushHtml = '<div class="total" style="margin-top:8px;color:var(--muted);font-size:13.5px;">Experienced push: <b style="color:var(--gold)">'+pushVal+'+ g/hr</b></div>';
+    }
+
+    var caveatHtml = '';
+    if(b.caveat){
+      caveatHtml = '<div class="caveat-inline">'+
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0b341" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>'+
+        '<div>'+b.caveat+'</div></div>';
+    }
+
+    resultEl.className = 'result';
+    resultEl.innerHTML =
+      '<div class="r-eyebrow">'+b.label+'</div>'+
+      '<div class="headline"><span class="num">'+rateLabel+'</span><span class="unit">g/hr</span></div>'+
+      '<div class="total"><b>'+totalLabel+' g</b> total over '+durLabel+'</div>'+
+      pushHtml+
+      '<div class="baseline">Your 1 g/kg/hr baseline: <b>'+baseline+' g/hr</b></div>'+
+      '<div class="ctx">'+b.ctx+'</div>'+
+      caveatHtml;
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
