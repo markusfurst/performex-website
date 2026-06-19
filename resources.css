@@ -315,7 +315,7 @@ tr.avg td{background:var(--surface-2);font-weight:700;color:var(--text);}
 .tool-foot .brandline{text-align:center;margin-top:18px;color:var(--muted-2);font-size:11.5px;}
 
 /* ─── RESOURCES LANDING ─────────────────────────────────── */
-.res-hero{padding:46px 0 30px;}
+.res-hero{padding:14px 0 30px;}
 .res-hero h1{font-family:var(--font-main);font-weight:800;letter-spacing:-.035em;line-height:1.05;font-size:clamp(32px,7vw,52px);margin-bottom:18px;max-width:14ch;}
 .res-hero h1 .accent{color:var(--gold);}
 .res-hero .lede{font-size:clamp(16px,2.4vw,18px);color:var(--muted);max-width:52ch;line-height:1.6;}
