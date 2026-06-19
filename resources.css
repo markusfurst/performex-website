@@ -202,6 +202,13 @@ select{
 }
 .caveat-inline svg{flex:0 0 auto;margin-top:1px;}
 
+/* explainer video */
+.explainer{padding:18px;}
+.explainer-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.explainer-note{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.explainer-video{max-width:300px;margin:0 auto;}
+.explainer-video video{width:100%;height:auto;display:block;border-radius:12px;background:#000;border:1px solid var(--border);}
+
 /* coach / timing note */
 .coach{
   background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);
