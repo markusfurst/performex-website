@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
-<title>Sweat Rate Lab — Performex Coaching</title>
+<title>Sweat Rate Lab - Performex Coaching</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,11 +89,11 @@
         <div class="row2">
           <div class="field">
             <label for="temp">Temperature <span class="opt">(optional)</span></label>
-            <div class="inpwrap"><input type="number" id="temp" inputmode="numeric" placeholder="—"><span class="unit">°F</span></div>
+            <div class="inpwrap"><input type="number" id="temp" inputmode="numeric" placeholder="–"><span class="unit">°F</span></div>
           </div>
           <div class="field">
             <label for="hum">Humidity <span class="opt">(optional)</span></label>
-            <div class="inpwrap"><input type="number" id="hum" inputmode="numeric" placeholder="—"><span class="unit">%</span></div>
+            <div class="inpwrap"><input type="number" id="hum" inputmode="numeric" placeholder="–"><span class="unit">%</span></div>
           </div>
         </div>
         <div class="note ok" id="note">Enter weight before, weight after, and duration to see your rate.</div>
@@ -120,18 +120,18 @@
             <div class="fill" id="fill"><div class="wave"></div></div>
           </div>
           <div class="readout">
-            <div class="bignum" id="big">—<span>L/hr</span></div>
+            <div class="bignum" id="big">–<span>L/hr</span></div>
             <div class="band" id="band"><span class="dot"></span>Awaiting data</div>
             <div class="alt" id="alt" style="display:none">
-              <div><b id="ozhr">—</b>oz / hr</div>
-              <div><b id="mlhr">—</b>mL / hr</div>
-              <div><b id="lostpct">—</b>body wt lost</div>
+              <div><b id="ozhr">–</b>oz / hr</div>
+              <div><b id="mlhr">–</b>mL / hr</div>
+              <div><b id="lostpct">–</b>body wt lost</div>
             </div>
           </div>
         </div>
         <div class="rehydrate" id="rehy" style="display:none">
           <h3>Drink target while training</h3>
-          <p>Aim to take in <b id="sip">—</b> per hour in similar conditions, roughly 50-80% of what you lose. Dial it in over a few sessions and keep total loss under ~2-3% of body weight.</p>
+          <p>Aim to take in <b id="sip">–</b> per hour in similar conditions, roughly 50-80% of what you lose. Dial it in over a few sessions and keep total loss under ~2-3% of body weight.</p>
         </div>
       </div>
     </div>
@@ -216,7 +216,7 @@
     const rate   = totalL / (dur/60);          // L/hr
     const pctLost = pre>0 ? (lostLb/pre)*100 : 0;
 
-    note.textContent="Looking good — save it to your log to compare across conditions.";
+    note.textContent="Looking good, save it to your log to compare across conditions.";
     note.className="note ok";
     render({rate, ozhr:rate/OZ_TO_L, mlhr:rate*1000, pctLost});
     return {rate, pctLost, dur, pre, post, fluid, temp:val("temp"), hum:val("hum"), lbl:$("lbl").value.trim()};
@@ -224,7 +224,7 @@
 
   function renderEmpty(){
     $("fill").style.height="0%";
-    $("big").innerHTML='—<span>L/hr</span>';
+    $("big").innerHTML='–<span>L/hr</span>';
     const band=$("band"); band.style.background="rgba(245,182,20,.12)"; band.style.color="#f5b614";
     band.innerHTML='<span class="dot"></span>Awaiting data';
     $("alt").style.display="none"; $("rehy").style.display="none";
@@ -273,7 +273,7 @@
     const parts=[];
     if(t.temp!==null) parts.push(t.temp+"°F");
     if(t.hum!==null) parts.push(t.hum+"%");
-    return parts.length?parts.join(" · "):"—";
+    return parts.length?parts.join(" · "):"–";
   }
 
   function renderLog(){

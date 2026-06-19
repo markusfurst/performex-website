@@ -84,7 +84,7 @@ fadeEls.forEach(el => observer.observe(el));
     Each slide gets 1/NUM = 1/3 of progress ≈ 100vh of scroll.
 
     TRANS controls the crossfade overlap (fraction of total progress).
-    0.04 = ~12vh of blend time at each transition — snappy, less overlap.
+    0.04 = ~12vh of blend time at each transition - snappy, less overlap.
   */
   const TRANS = 0.04;
 
@@ -149,7 +149,7 @@ fadeEls.forEach(el => observer.observe(el));
       textSlides[i].style.transform      = `translateY(${ty.toFixed(1)}px)`;
       textSlides[i].style.pointerEvents  = op > 0.6 ? 'auto' : 'none';
 
-      // Image slide — subtle scale-in as it appears
+      // Image slide - subtle scale-in as it appears
       imgSlides[i].style.opacity   = op;
       imgSlides[i].style.transform = `scale(${(1 + (1 - op) * 0.03).toFixed(4)})`;
 
@@ -243,7 +243,7 @@ fadeEls.forEach(el => observer.observe(el));
   if (!headline) return;
 
   let charIndex = 0;
-  const BASE_DELAY = 150; // ms — start shortly after eyebrow
+  const BASE_DELAY = 150; // ms - start shortly after eyebrow
   const PER_CHAR   = 14;  // ms between each letter
 
   function wrapTextNode(textNode) {
@@ -266,7 +266,7 @@ fadeEls.forEach(el => observer.observe(el));
     if (child.nodeType === Node.TEXT_NODE) {
       wrapTextNode(child);
     } else if (child.nodeName === 'SPAN') {
-      // accent span — wrap its inner text chars too
+      // accent span - wrap its inner text chars too
       Array.from(child.childNodes).forEach(inner => {
         if (inner.nodeType === Node.TEXT_NODE) wrapTextNode(inner);
       });

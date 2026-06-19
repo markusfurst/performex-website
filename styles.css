@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   PERFORMEX — Ironman Coaching Website
+   PERFORMEX - Ironman Coaching Website
    Design: Minimalist Dark/Light, Gold Accents, Manrope Font
    ═══════════════════════════════════════════════════════════ */
 
@@ -642,7 +642,7 @@ ul { list-style: none; }
   left: clamp(40px, 6vw, 96px);
 }
 
-/* ── Image panel (right) — light bg, image as smaller inset card ── */
+/* ── Image panel (right) - light bg, image as smaller inset card ── */
 .about-image-panel {
   position: relative;
   background: var(--white);
@@ -1190,7 +1190,7 @@ blockquote {
   .stat:nth-child(even) { padding-right: 0; }
   .stat:nth-child(n+3) { margin-top: 24px; }
 
-  /* About — mobile: disable sticky scroll, show slides stacked */
+  /* About - mobile: disable sticky scroll, show slides stacked */
   .about-story { height: auto; }
 
   .about-sticky {
