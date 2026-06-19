@@ -202,11 +202,21 @@ select{
 }
 .caveat-inline svg{flex:0 0 auto;margin-top:1px;}
 
-/* explainer video */
-.explainer{padding:18px;}
-.explainer-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
-.explainer-note{font-size:13px;color:var(--muted);margin-bottom:14px;}
-.explainer-video{max-width:300px;margin:0 auto;}
+/* explainer video (collapsible button) */
+.video-toggle{margin-bottom:16px;}
+.video-btn{
+  display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:13px 15px;font-family:var(--font-main);font-weight:700;font-size:15px;color:var(--text);
+  transition:border-color .15s;
+}
+.video-btn::-webkit-details-marker{display:none;}
+.video-btn:hover{border-color:var(--gold-line);}
+.video-play-ico{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--black);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.video-play-ico svg{margin-left:2px;}
+.video-meta{margin-left:auto;font-size:12px;font-weight:600;color:var(--muted-2);white-space:nowrap;}
+.video-toggle[open] .video-btn{border-color:var(--gold-line);}
+.explainer-video{max-width:300px;margin:14px auto 0;}
 .explainer-video video{width:100%;height:auto;display:block;border-radius:12px;background:#000;border:1px solid var(--border);}
 
 /* coach / timing note */
