@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Hydration & Electrolytes - Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=4">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap-wide">
+
+  <span class="eyebrow">Fueling Strategy</span>
+  <h1 class="tool-title">Hydration & Electrolytes</h1>
+  <p class="tool-sub tool-sub-wide">Carbs scale predictably with output and duration. Hydration and sodium don't — two athletes riding side by side at the same power can lose wildly different amounts. This is the framework for getting yours dialled in.</p>
+
+  <div class="coach">
+    <div class="tag">Why it matters</div>
+    <p>Get hydration right and it <b>stabilises heart rate, supports fuelling tolerance, and protects performance late in the race</b>. Get it wrong and you're dealing with GI distress, cramping, and fading power. Errors compound — small mistakes in the first half become race-ending problems in the second.</p>
+  </div>
+
+  <!-- ── HOURLY FLUID TARGET ─────────────────────────────── -->
+  <h2 class="sec-h">Hourly fluid target</h2>
+  <p class="sec-sub">The goal is to limit excessive dehydration without overhydrating. Pick the conditions for a general Ironman starting range — then refine it against your own sweat rate.</p>
+
+  <div class="hydro-target">
+    <div class="cond-toggle" id="condToggle">
+      <button type="button" data-c="cool">Cool</button>
+      <button type="button" data-c="moderate" class="active">Moderate</button>
+      <button type="button" data-c="hot">Hot</button>
+    </div>
+    <div class="hydro-readout">
+      <div class="r-eyebrow">Drink per hour</div>
+      <div><span class="num" id="hydroNum">650–800</span><span class="unit">ml/hr</span></div>
+      <p class="desc" id="hydroDesc">Typical race-day conditions. Steady intake that keeps thirst manageable and heart rate stable for the effort.</p>
+    </div>
+  </div>
+
+  <div class="caveat-inline">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    <span><b>More fluid is not always better.</b> Overhydration can dilute blood sodium and create real health risks. Signs it's working: stable HR for the effort, manageable thirst, no stomach sloshing.</span>
+  </div>
+
+  <!-- ── SODIUM COHORT ───────────────────────────────────── -->
+  <h2 class="sec-h">Find your sodium cohort</h2>
+  <p class="sec-sub">Rather than chasing an exact number, find your cohort and work from there. Sodium loss is measured as a concentration — milligrams per litre of sweat (mg/L). Some athletes sweat lightly but lose lots of sodium; others sweat buckets and lose little.</p>
+
+  <section class="cohort-list">
+    <article class="cohort-card" style="--accent:#5fd38a">
+      <div class="cohort-head"><span class="cohort-name">Light</span><span class="cohort-range">~200–700 mg/L</span></div>
+      <p class="cohort-body">Sodium is less of a limiter for you. Sports drinks alone usually cover it — some light salters may even need to <b>avoid overly concentrated drinks and salt tabs</b> to prevent GI upset.</p>
+    </article>
+    <article class="cohort-card" style="--accent:#f5b614">
+      <div class="cohort-head"><span class="cohort-name">Medium</span><span class="cohort-range">~700–1100 mg/L</span></div>
+      <p class="cohort-body">A standard sports drink is typically sufficient. <b>Supplemental sodium</b> — a tab or stronger mix — may help at the higher end of the range or in the heat.</p>
+    </article>
+    <article class="cohort-card" style="--accent:#e8542f">
+      <div class="cohort-head"><span class="cohort-name">Heavy</span><span class="cohort-range">~1100–2200+ mg/L</span></div>
+      <p class="cohort-body">Requires consistent electrolyte intake — <b>usually both a sports drink and dedicated salt supplements</b>. If you skip this, you'll likely cramp or fade late no matter how well you fuelled carbs.</p>
+    </article>
+  </section>
+
+  <div class="coach">
+    <div class="tag">If you're untested</div>
+    <p>Start in the <b>medium</b> range and adjust from what you observe. <b>Cramping late?</b> You're probably undershooting sodium. <b>GI issues with every electrolyte product?</b> You might be overshooting. Median sodium loss sits around <b>500 mg/L</b> — a reasonable opening estimate to refine through real training and racing.</p>
+  </div>
+
+  <!-- ── PRINCIPLES ──────────────────────────────────────── -->
+  <h2 class="sec-h">Principles that don't change</h2>
+  <p class="sec-sub">The numbers are personal, but the rules behind them hold for everyone.</p>
+
+  <div class="fact-grid">
+    <div class="fact">
+      <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg></span>Variability is the rule</h3>
+      <p>You can't predict sweat rate or sodium loss from appearance, fitness, or body size. <b>Visible salt rings reflect concentration, not total loss</b> — they aren't reliable data.</p>
+    </div>
+    <div class="fact">
+      <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg></span>Front-load, stay flexible</h3>
+      <p>Sweat rate runs higher early and eases over long events. <b>Slightly front-load sodium</b>, then adjust on feel, temperature, and gut tolerance. Rigid plans with no flexibility tend to break late.</p>
+    </div>
+    <div class="fact">
+      <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6 6.2 6 10.3a6 6 0 0 1-12 0c0-4.1 6-10.3 6-10.3z"></path></svg></span>More isn't better</h3>
+      <p>Drinking past your needs <b>can dilute blood sodium</b> and create health risks, not gains. Aim for stable HR, manageable thirst, and no bloating — not the fullest possible stomach.</p>
+    </div>
+    <div class="fact">
+      <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Rehearse, then re-tune</h3>
+      <p>Long, hard sessions are your test bed — practise bottle mixing, sodium dosing, and aid-station execution there. Needs shift with heat acclimation, fitness, and season, so <b>nothing new on race day</b>.</p>
+    </div>
+  </div>
+
+  <!-- ── RACE-DAY REFERENCE ──────────────────────────────── -->
+  <h2 class="sec-h">Race-day reference</h2>
+  <p class="sec-sub">A segment-by-segment starting guide for a full-distance race. Treat the numbers as anchors, not rules — read your stomach and the conditions.</p>
+
+  <section class="seg-list" id="segList"></section>
+
+  <!-- ── CROSSLINK ───────────────────────────────────────── -->
+  <a href="tool-sweat-rate.html" class="crosslink">
+    <span class="cl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6 6.2 6 10.3a6 6 0 0 1-12 0c0-4.1 6-10.3 6-10.3z"></path></svg></span>
+    <span class="cl-txt">
+      <h3>Don't know your sweat rate yet?</h3>
+      <p>The Sweat Rate Lab turns a weigh-in/weigh-out test into your personal fluid loss per hour — the number this guide builds on.</p>
+    </span>
+    <span class="cl-go"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+  </a>
+
+  <footer class="tool-foot">
+    <p>These are general principles and starting points, not medical advice. Hydration isn't solved by formulas — real breakthroughs come from testing, practice, and adjusting to what actually happens on the day. Individualise everything before race day.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+<script>
+  /* ── Hourly fluid target ──────────────────────────────── */
+  var COND = {
+    cool:     { num:"500–650",  desc:"Cool, low-sweat conditions. Drink closer to thirst and avoid overhydrating early in the race." },
+    moderate: { num:"650–800",  desc:"Typical race-day conditions. Steady intake that keeps thirst manageable and heart rate stable for the effort." },
+    hot:      { num:"800–1000+",desc:"Heat and humidity push losses up. Increase fluids before increasing carbs, and make cooling a priority." }
+  };
+  var toggle = document.getElementById("condToggle");
+  var numEl = document.getElementById("hydroNum");
+  var descEl = document.getElementById("hydroDesc");
+  toggle.addEventListener("click", function(e){
+    var btn = e.target.closest("button");
+    if(!btn) return;
+    toggle.querySelectorAll("button").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
+    var c = COND[btn.dataset.c];
+    numEl.textContent = c.num;
+    descEl.textContent = c.desc;
+  });
+
+  /* ── Race-day segments ────────────────────────────────── */
+  var SEG = [
+    { name:"Pre-race (30–10 min)", fluid:"Small sips",      sodium:"Optional, 200–400 mg", note:"Gel + water is common. Avoid overdrinking before the gun." },
+    { name:"Swim",                 fluid:"None",            sodium:"None",                 note:"Focus on pacing and rhythm." },
+    { name:"T1",                   fluid:"Small drink",     sodium:"Small dose if heavy sweater", note:"Useful if the swim was long. Don't rush the intake." },
+    { name:"Early bike",           fluid:"500–800 ml/hr",   sodium:"500–800 mg/L",         note:"Start fuelling early but calmly. Let HR settle for the first 10–15 min." },
+    { name:"Hot conditions",       fluid:"800–1000+ ml/hr", sodium:"800–1200 mg/L",        note:"Increase fluids before increasing carbs." },
+    { name:"Cool conditions",      fluid:"500–650 ml/hr",   sodium:"300–600 mg/L",         note:"Avoid overhydration early." },
+    { name:"Mid–late bike",        fluid:"600–900 ml/hr",   sodium:"500–800 mg/L",         note:"Stay steady even as appetite drops." },
+    { name:"Final bike hour",      fluid:"Moderate",        sodium:"Slightly reduced",     note:"Prepare the gut for the run. Avoid overdrinking late." },
+    { name:"T2",                   fluid:"Small drink",     sodium:"Optional",             note:"Keep it simple. Don't overload the stomach." },
+    { name:"Early run",            fluid:"500–700 ml/hr",   sodium:"400–800 mg/L",         note:"Conservative start — gut stability is the priority." },
+    { name:"Mid run",              fluid:"500–800 ml/hr",   sodium:"Adjust to sweat rate", note:"Walk aid stations if that's what it takes to fuel." },
+    { name:"Hot run",             fluid:"700–900 ml/hr",   sodium:"Higher sodium",        note:"Cooling becomes critical." },
+    { name:"Late race",            fluid:"Same as mid run", sodium:"Moderate sodium",      note:"Take what you can tolerate." },
+    { name:"GI distress",          fluid:"Small sips",      sodium:"Small sodium",         note:"Stabilise the stomach first. Everything else is secondary." }
+  ];
+  var segList = document.getElementById("segList");
+  SEG.forEach(function(s){
+    var card = document.createElement("article");
+    card.className = "seg-card";
+    card.innerHTML =
+      '<div class="seg-name">' + s.name + '</div>' +
+      '<div class="seg-chips">' +
+        '<span class="seg-chip f"><span class="k">Fluids</span><b>' + s.fluid + '</b></span>' +
+        '<span class="seg-chip"><span class="k">Sodium</span><b>' + s.sodium + '</b></span>' +
+      '</div>' +
+      '<p class="seg-note">' + s.note + '</p>';
+    segList.appendChild(card);
+  });
+</script>
+</body>
+</html>
