@@ -85,6 +85,7 @@ h1.tool-title{
   font-size:clamp(26px,5.5vw,34px);line-height:1.1;margin-bottom:8px;
 }
 .tool-sub{color:var(--muted);font-size:15px;line-height:1.55;margin-bottom:24px;max-width:48ch;}
+.tool-sub.tool-sub-wide{max-width:none;}
 
 /* ─── TOOL SWITCHER ─────────────────────────────────────── */
 .tool-switch{
