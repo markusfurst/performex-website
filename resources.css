@@ -357,6 +357,47 @@ tr.avg td{background:var(--surface-2);font-weight:700;color:var(--text);}
 .tlc-go svg{transition:transform .2s;}
 .tool-link-card:hover .tlc-go svg{transform:translate(3px,-3px);}
 
+/* ─── EFFORT & PACING GUIDE ─────────────────────────────── */
+.zone-list{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+.zone-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--accent,var(--gold));border-radius:var(--radius);
+  padding:18px 20px;transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.zone-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.35);}
+.zone-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.zone-rpe{
+  flex:0 0 auto;min-width:56px;height:56px;padding:0 11px;border-radius:12px;
+  background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;
+}
+.zone-rpe .rpe-num{font-family:var(--font-main);font-weight:800;font-size:21px;letter-spacing:-.02em;}
+.zone-rpe .rpe-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;opacity:.85;margin-top:4px;}
+.zone-titles{flex:1 1 160px;min-width:0;}
+.zone-label{font-family:var(--font-main);font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.2;}
+.zone-cue{
+  display:inline-flex;align-items:center;gap:7px;margin-top:8px;
+  padding:4px 11px;border-radius:8px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent);
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.zone-cue b{font-size:14px;font-weight:800;letter-spacing:.01em;text-transform:none;color:var(--accent,var(--gold));}
+.zone-dur{flex:0 0 auto;text-align:right;}
+.zone-dur .k{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-bottom:3px;}
+.zone-dur b{font-family:var(--font-main);font-size:14.5px;color:var(--text);font-weight:700;white-space:nowrap;}
+.zone-attrs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;
+  padding-top:15px;border-top:1px solid var(--border);
+}
+.zone-attrs > div{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.zone-attrs .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);}
+.zone-attrs .v{font-size:13.5px;color:var(--text);line-height:1.4;}
+@media(max-width:600px){
+  .zone-dur{text-align:left;order:3;flex-basis:100%;}
+  .zone-dur .k{display:inline;margin-right:6px;}
+  .zone-attrs{grid-template-columns:1fr;gap:10px;}
+}
+
 /* ─── SWIM DRILL LIBRARY ────────────────────────────────── */
 .drill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px;}
 @media(max-width:860px){.drill-grid{grid-template-columns:1fr 1fr;}}

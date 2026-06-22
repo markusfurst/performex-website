@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Effort & Pacing Guide - Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=2">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap-wide">
+
+  <span class="eyebrow">Pacing</span>
+  <h1 class="tool-title">Effort & Pacing Guide</h1>
+  <p class="tool-sub">Most sessions call for an effort, not a fixed pace or power number. Use this to match how each zone should feel to its purpose.</p>
+
+  <div class="coach">
+    <div class="tag">How to use this</div>
+    <p><b>RPE</b> is your rating of perceived exertion on a 1 to 10 scale. The <b>talk test</b> is the fastest cross-check: if you can hold a full conversation you are easy, and if you can only manage a word or two you are racing. When a number is missing or feels off on the day, go by feel and keep your easy days genuinely easy.</p>
+  </div>
+
+  <section class="zone-list" id="zoneList"></section>
+
+  <footer class="tool-foot">
+    <p>These zones are guidelines, not absolutes. Heat, fatigue, altitude, and terrain all shift how a given effort feels, so adjust to the conditions rather than forcing a pace.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+<script>
+  var ZONES = [
+    { rpe:"2–3",  label:"Recovery / Very easy",   cue:"Very easy",        feel:"Super relaxed",          talk:"Full conversation", breath:"Very light / nasal",   dur:"60–120+ min",         accent:"#5fd38a" },
+    { rpe:"3–4",  label:"Easy / Aerobic",         cue:"Easy",             feel:"Comfortable, all-day pace", talk:"Full sentences",  breath:"Light, rhythmic",      dur:"45–180+ min",         accent:"#83cf5f" },
+    { rpe:"5",    label:"Steady",                 cue:"Moderate",         feel:"Working but controlled", talk:"Short sentences",   breath:"Deeper but controlled", dur:"30–90 min",          accent:"#c2cf45" },
+    { rpe:"6",    label:"Marathon effort",        cue:"Moderate / hard",  feel:"Strong but sustainable", talk:"4–6 words",         breath:"Heavy but steady",     dur:"60–120 min",          accent:"#f5b614" },
+    { rpe:"7",    label:"Half marathon effort",   cue:"Hard",             feel:"Comfortably hard",       talk:"3–4 words",         breath:"Heavy",                dur:"45–75 min",           accent:"#f0941f" },
+    { rpe:"8",    label:"10K effort",             cue:"1-hour effort",    feel:"Hard, focused",          talk:"1–2 words",         breath:"Very heavy",           dur:"20–40 min",           accent:"#ec7320" },
+    { rpe:"9",    label:"5K effort",              cue:"30-min effort",    feel:"Very hard",              talk:"Barely 1 word",     breath:"Labored",              dur:"10–20 min intervals", accent:"#e8542f" },
+    { rpe:"9–10", label:"1-mile effort",          cue:"Fast",             feel:"Near max but controlled", talk:"No talking",       breath:"Very labored",         dur:"1–5 min",             accent:"#e23b3b" }
+  ];
+
+  var list = document.getElementById("zoneList");
+  ZONES.forEach(function(z){
+    var card = document.createElement("article");
+    card.className = "zone-card";
+    card.style.setProperty("--accent", z.accent);
+    card.innerHTML =
+      '<div class="zone-head">' +
+        '<span class="zone-rpe"><span class="rpe-num">' + z.rpe + '</span><span class="rpe-lbl">RPE</span></span>' +
+        '<div class="zone-titles">' +
+          '<h2 class="zone-label">' + z.label + '</h2>' +
+          '<span class="zone-cue">Cue <b>' + z.cue + '</b></span>' +
+        '</div>' +
+        '<div class="zone-dur"><span class="k">Sustainable for</span><b>' + z.dur + '</b></div>' +
+      '</div>' +
+      '<div class="zone-attrs">' +
+        '<div><span class="k">How it feels</span><span class="v">' + z.feel + '</span></div>' +
+        '<div><span class="k">Talk test</span><span class="v">' + z.talk + '</span></div>' +
+        '<div><span class="k">Breathing</span><span class="v">' + z.breath + '</span></div>' +
+      '</div>';
+    list.appendChild(card);
+  });
+</script>
+</body>
+</html>
