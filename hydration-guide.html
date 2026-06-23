@@ -113,12 +113,6 @@
     </div>
   </div>
 
-  <!-- ── RACE-DAY REFERENCE ──────────────────────────────── -->
-  <h2 class="sec-h">Race-day reference</h2>
-  <p class="sec-sub">A segment-by-segment starting guide for a full-distance race. Treat the numbers as anchors, not rules. Read your stomach and the conditions.</p>
-
-  <section class="seg-list" id="segList"></section>
-
   <!-- ── CROSSLINK ───────────────────────────────────────── -->
   <a href="tool-sweat-rate.html" class="crosslink">
     <span class="cl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6 6.2 6 10.3a6 6 0 0 1-12 0c0-4.1 6-10.3 6-10.3z"></path></svg></span>
@@ -136,37 +130,5 @@
 
 </main>
 
-<script>
-  /* ── Race-day segments ────────────────────────────────── */
-  var SEG = [
-    { name:"Pre-race (30–10 min)", fluid:"Small sips",      sodium:"Optional, 200–400 mg", note:"Gel + water is common. Avoid overdrinking before the gun." },
-    { name:"Swim",                 fluid:"None",            sodium:"None",                 note:"Focus on pacing and rhythm." },
-    { name:"T1",                   fluid:"Small drink",     sodium:"Small dose if heavy sweater", note:"Useful if the swim was long. Don't rush the intake." },
-    { name:"Early bike",           fluid:"500–800 ml/hr",   sodium:"500–800 mg/L",         note:"Start fuelling early but calmly. Let HR settle for the first 10–15 min." },
-    { name:"Hot conditions",       fluid:"800–1000+ ml/hr", sodium:"800–1200 mg/L",        note:"Increase fluids before increasing carbs." },
-    { name:"Cool conditions",      fluid:"500–650 ml/hr",   sodium:"300–600 mg/L",         note:"Avoid overhydration early." },
-    { name:"Mid–late bike",        fluid:"600–900 ml/hr",   sodium:"500–800 mg/L",         note:"Stay steady even as appetite drops." },
-    { name:"Final bike hour",      fluid:"Moderate",        sodium:"Slightly reduced",     note:"Prepare the gut for the run. Avoid overdrinking late." },
-    { name:"T2",                   fluid:"Small drink",     sodium:"Optional",             note:"Keep it simple. Don't overload the stomach." },
-    { name:"Early run",            fluid:"500–700 ml/hr",   sodium:"400–800 mg/L",         note:"Conservative start. Gut stability is the priority." },
-    { name:"Mid run",              fluid:"500–800 ml/hr",   sodium:"Adjust to sweat rate", note:"Walk aid stations if that's what it takes to fuel." },
-    { name:"Hot run",             fluid:"700–900 ml/hr",   sodium:"Higher sodium",        note:"Cooling becomes critical." },
-    { name:"Late race",            fluid:"Same as mid run", sodium:"Moderate sodium",      note:"Take what you can tolerate." },
-    { name:"GI distress",          fluid:"Small sips",      sodium:"Small sodium",         note:"Stabilise the stomach first. Everything else is secondary." }
-  ];
-  var segList = document.getElementById("segList");
-  SEG.forEach(function(s){
-    var card = document.createElement("article");
-    card.className = "seg-card";
-    card.innerHTML =
-      '<div class="seg-name">' + s.name + '</div>' +
-      '<div class="seg-chips">' +
-        '<span class="seg-chip f"><span class="k">Fluids</span><b>' + s.fluid + '</b></span>' +
-        '<span class="seg-chip"><span class="k">Sodium</span><b>' + s.sodium + '</b></span>' +
-      '</div>' +
-      '<p class="seg-note">' + s.note + '</p>';
-    segList.appendChild(card);
-  });
-</script>
 </body>
 </html>
