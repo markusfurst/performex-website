@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="resources.css?v=4">
+<link rel="stylesheet" href="resources.css?v=5">
 </head>
 <body>
 
@@ -36,19 +36,29 @@
 
   <!-- ── HOURLY FLUID TARGET ─────────────────────────────── -->
   <h2 class="sec-h">Hourly fluid target</h2>
-  <p class="sec-sub">The goal is to limit excessive dehydration without overhydrating. Pick the conditions for a general Ironman starting range — then refine it against your own sweat rate.</p>
+  <p class="sec-sub">The goal is to limit excessive dehydration without overhydrating. Use the conditions to find a general Ironman starting range, then refine it against your own sweat rate.</p>
 
-  <div class="hydro-target">
-    <div class="cond-toggle" id="condToggle">
-      <button type="button" data-c="cool">Cool</button>
-      <button type="button" data-c="moderate" class="active">Moderate</button>
-      <button type="button" data-c="hot">Hot</button>
+  <div class="cond-grid">
+    <div class="cond-box">
+      <span class="cond-name">Cool</span>
+      <div class="cond-val"><span class="num">500–650</span><span class="unit">ml/hr</span></div>
+      <p class="cond-desc">Cool, low-sweat conditions. Drink closer to thirst and avoid overhydrating early in the race.</p>
     </div>
-    <div class="hydro-readout">
-      <div class="r-eyebrow">Drink per hour</div>
-      <div><span class="num" id="hydroNum">650–800</span><span class="unit">ml/hr</span></div>
-      <p class="desc" id="hydroDesc">Typical race-day conditions. Steady intake that keeps thirst manageable and heart rate stable for the effort.</p>
+    <div class="cond-box">
+      <span class="cond-name">Moderate</span>
+      <div class="cond-val"><span class="num">650–800</span><span class="unit">ml/hr</span></div>
+      <p class="cond-desc">Typical race-day conditions. Steady intake that keeps thirst manageable and heart rate stable for the effort.</p>
     </div>
+    <div class="cond-box">
+      <span class="cond-name">Hot</span>
+      <div class="cond-val"><span class="num">800–1000+</span><span class="unit">ml/hr</span></div>
+      <p class="cond-desc">Heat and humidity push losses up. Increase fluids before increasing carbs, and make cooling a priority.</p>
+    </div>
+  </div>
+
+  <div class="coach">
+    <div class="tag">Haven't tested your sweat rate?</div>
+    <p>These ranges are <b>general guidelines</b>, not your personal numbers. Two athletes in the same conditions can need very different amounts. Treat them as a starting point and dial them in with the <a href="tool-sweat-rate.html" class="inline-link">Sweat Rate Lab</a>.</p>
   </div>
 
   <div class="caveat-inline">
@@ -77,7 +87,7 @@
 
   <div class="coach">
     <div class="tag">If you're untested</div>
-    <p>Start in the <b>medium</b> range and adjust from what you observe. <b>Cramping late?</b> You're probably undershooting sodium. <b>GI issues with every electrolyte product?</b> You might be overshooting. Median sodium loss sits around <b>500 mg/L</b> — a reasonable opening estimate to refine through real training and racing.</p>
+    <p>Start in the <b>medium</b> range and adjust from what you observe. <b>Cramping late?</b> You're probably undershooting sodium. <b>GI issues with every electrolyte product?</b> You might be overshooting. Median sodium loss sits around <b>800 mg/L</b>, a reasonable opening estimate to refine through real training and racing.</p>
   </div>
 
   <!-- ── PRINCIPLES ──────────────────────────────────────── -->
@@ -127,25 +137,6 @@
 </main>
 
 <script>
-  /* ── Hourly fluid target ──────────────────────────────── */
-  var COND = {
-    cool:     { num:"500–650",  desc:"Cool, low-sweat conditions. Drink closer to thirst and avoid overhydrating early in the race." },
-    moderate: { num:"650–800",  desc:"Typical race-day conditions. Steady intake that keeps thirst manageable and heart rate stable for the effort." },
-    hot:      { num:"800–1000+",desc:"Heat and humidity push losses up. Increase fluids before increasing carbs, and make cooling a priority." }
-  };
-  var toggle = document.getElementById("condToggle");
-  var numEl = document.getElementById("hydroNum");
-  var descEl = document.getElementById("hydroDesc");
-  toggle.addEventListener("click", function(e){
-    var btn = e.target.closest("button");
-    if(!btn) return;
-    toggle.querySelectorAll("button").forEach(function(b){ b.classList.remove("active"); });
-    btn.classList.add("active");
-    var c = COND[btn.dataset.c];
-    numEl.textContent = c.num;
-    descEl.textContent = c.desc;
-  });
-
   /* ── Race-day segments ────────────────────────────────── */
   var SEG = [
     { name:"Pre-race (30–10 min)", fluid:"Small sips",      sodium:"Optional, 200–400 mg", note:"Gel + water is common. Avoid overdrinking before the gun." },
