@@ -402,7 +402,7 @@ tr.avg td{background:var(--surface-2);font-weight:700;color:var(--text);}
 
 /* ─── HYDRATION & ELECTROLYTES ──────────────────────────── */
 .sec-h{font-family:var(--font-main);font-size:18px;font-weight:800;letter-spacing:-.02em;margin:32px 0 6px;}
-.sec-sub{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:14px;max-width:64ch;}
+.sec-sub{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
 
 .cond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
 @media(max-width:680px){.cond-grid{grid-template-columns:1fr;}}
