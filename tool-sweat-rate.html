@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="resources.css?v=3">
+<link rel="stylesheet" href="resources.css?v=4">
 </head>
 <body>
 
@@ -66,14 +66,21 @@
           <label for="lbl">Test label <span class="opt">(optional)</span></label>
           <input type="text" id="lbl" placeholder="e.g. Hot midday Z2 run">
         </div>
+        <div class="unit-row">
+          <span class="unit-row-label">Weigh-in unit</span>
+          <div class="toggle" id="wtUnit">
+            <button class="active" id="lbBtn" type="button">lb</button>
+            <button id="kgBtn" type="button">kg</button>
+          </div>
+        </div>
         <div class="row2">
           <div class="field">
             <label for="pre">Weight before</label>
-            <div class="inpwrap"><input type="number" id="pre" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit">lb</span></div>
+            <div class="inpwrap"><input type="number" id="pre" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit" id="preUnit">lb</span></div>
           </div>
           <div class="field">
             <label for="post">Weight after</label>
-            <div class="inpwrap"><input type="number" id="post" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit">lb</span></div>
+            <div class="inpwrap"><input type="number" id="post" inputmode="decimal" step="0.1" placeholder="0.0"><span class="unit" id="postUnit">lb</span></div>
           </div>
         </div>
         <div class="row2">
@@ -131,7 +138,17 @@
         </div>
         <div class="rehydrate" id="rehy" style="display:none">
           <h3>Drink target while training</h3>
-          <p>Aim to take in <b id="sip">–</b> per hour in similar conditions, roughly 50-80% of what you lose. Dial it in over a few sessions and keep total loss under ~2-3% of body weight.</p>
+          <p class="rehy-sub">Replace <b>most</b> of what you lose while training, not all of it. Matching your full loss faster than your gut can absorb causes sloshing and can dilute your sodium, so you bank a small deficit and top up afterwards.</p>
+          <div class="repcap"><span>You're losing</span><b id="lossnum">–</b></div>
+          <div class="repbar">
+            <div class="repbar-fill" id="repFill"></div>
+            <div class="repbar-rest"></div>
+          </div>
+          <div class="repbar-key">
+            <span class="k-drink">Drink <b id="sip">–</b>/hr now</span>
+            <span class="k-rest">top up <b id="deficit">–</b> after</span>
+          </div>
+          <p class="rehy-foot">That target is roughly <b>50–80%</b> of what you lose. Dial it in over a few sessions and keep total loss under ~2–3% of body weight.</p>
         </div>
       </div>
     </div>
@@ -168,7 +185,7 @@
   </section>
 
   <footer class="tool-foot">
-    <p>Sweat rate is estimated from body-weight change (1&nbsp;lb of loss ≈ 0.45&nbsp;L of fluid), plus any fluid you drank during the session, scaled to an hourly rate. It's a strong starting point for planning hydration, not a medical measurement. Individualise it in training and adjust for longer or harder efforts.</p>
+    <p>Sweat rate is estimated from body-weight change (1&nbsp;lb of loss ≈ 0.45&nbsp;L, or 1&nbsp;kg ≈ 1&nbsp;L of fluid), plus any fluid you drank during the session, scaled to an hourly rate. It's a strong starting point for planning hydration, not a medical measurement. Individualise it in training and adjust for longer or harder efforts.</p>
     <p class="brandline">PerformEX Coaching · for athlete use</p>
   </footer>
 
@@ -190,8 +207,21 @@
   ];
   function bandFor(r){let b=bands[0];for(const x of bands){if(r>=x.min)b=x;}return b;}
 
+  const KG_TO_L = 1;             // 1 kg of body-mass loss ≈ 1 L fluid
   const ins = ["pre","post","dur","fluid","temp","hum","lbl"].map($);
   let tests = [];
+  let unit = "lb";               // weigh-in unit (lb | kg)
+
+  function setUnit(u){
+    unit = u;
+    $("lbBtn").classList.toggle("active", u==="lb");
+    $("kgBtn").classList.toggle("active", u==="kg");
+    $("preUnit").textContent = u;
+    $("postUnit").textContent = u;
+    compute();
+  }
+  $("lbBtn").addEventListener("click",()=>setUnit("lb"));
+  $("kgBtn").addEventListener("click",()=>setUnit("kg"));
 
   function val(id){const v=parseFloat($(id).value);return isNaN(v)?null:v;}
 
@@ -209,17 +239,17 @@
       note.className="note"; renderEmpty(); return null;
     }
 
-    const lostLb = pre - post;
-    const lostL  = lostLb * LB_TO_L;
+    const lostWt = pre - post;
+    const lostL  = lostWt * (unit==="kg" ? KG_TO_L : LB_TO_L);
     const drankL = fluid * OZ_TO_L;
     const totalL = lostL + drankL;             // true sweat loss
     const rate   = totalL / (dur/60);          // L/hr
-    const pctLost = pre>0 ? (lostLb/pre)*100 : 0;
+    const pctLost = pre>0 ? (lostWt/pre)*100 : 0;
 
     note.textContent="Looking good, save it to your log to compare across conditions.";
     note.className="note ok";
     render({rate, ozhr:rate/OZ_TO_L, mlhr:rate*1000, pctLost});
-    return {rate, pctLost, dur, pre, post, fluid, temp:val("temp"), hum:val("hum"), lbl:$("lbl").value.trim()};
+    return {rate, pctLost, dur, pre, post, unit, fluid, temp:val("temp"), hum:val("hum"), lbl:$("lbl").value.trim()};
   }
 
   function renderEmpty(){
@@ -248,8 +278,13 @@
     $("lostpct").textContent=d.pctLost.toFixed(1)+"%";
 
     const lo=Math.round(d.ozhr*0.5), hi=Math.round(d.ozhr*0.8);
+    const loss=Math.round(d.ozhr);
+    const fillPct=Math.max(8,Math.min(92,Math.round(((lo+hi)/2)/d.ozhr*100)));
     $("rehy").style.display="block";
     $("sip").textContent=lo+"–"+hi+" oz";
+    $("lossnum").textContent=loss+" oz/hr";
+    $("deficit").textContent=(loss-hi)+"–"+(loss-lo)+" oz";
+    $("repFill").style.flexBasis=fillPct+"%";
   }
 
   function hexA(hex,a){const n=parseInt(hex.slice(1),16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;}
@@ -318,10 +353,10 @@
 
   $("export").addEventListener("click",()=>{
     if(!tests.length){alert("Nothing to export yet. Save a test first.");return;}
-    const head=["Test","Temp_F","Humidity_%","Duration_min","Pre_lb","Post_lb","Fluid_oz","SweatRate_L_hr","SweatRate_oz_hr","BodyWtLost_%","Band"];
+    const head=["Test","Temp_F","Humidity_%","Duration_min","Weight_unit","Pre","Post","Fluid_oz","SweatRate_L_hr","SweatRate_oz_hr","BodyWtLost_%","Band"];
     const rows=tests.map((t,i)=>[
       `"${(t.lbl||("Test "+(i+1))).replace(/"/g,'""')}"`,
-      t.temp??"", t.hum??"", t.dur, t.pre, t.post, t.fluid,
+      t.temp??"", t.hum??"", t.dur, t.unit||"lb", t.pre, t.post, t.fluid,
       t.rate.toFixed(2), Math.round(t.rate/OZ_TO_L), t.pctLost.toFixed(1), bandFor(t.rate).label
     ].join(","));
     const csv=[head.join(","),...rows].join("\n");

@@ -147,6 +147,12 @@ select{
 
 .dur-suffix{display:flex;align-items:center;justify-content:center;color:var(--muted-2);font-size:13px;font-weight:600;padding:0 4px;flex:0 0 auto;}
 
+/* weigh-in unit row (sweat lab) */
+.unit-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.unit-row-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.unit-row .toggle{flex:0 0 104px;}
+.unit-row .toggle button{padding:8px 0;font-size:13px;}
+
 /* number input with inline unit (sweat lab) */
 .inpwrap{position:relative;}
 .inpwrap input{padding-right:42px;}
@@ -297,6 +303,20 @@ select{
 .rehydrate h3{font-family:var(--font-main);font-size:14px;margin-bottom:6px;letter-spacing:-.01em;}
 .rehydrate p{font-size:13.5px;color:var(--muted);line-height:1.55;}
 .rehydrate b{color:var(--gold);font-weight:700;}
+.rehy-sub{margin-bottom:14px;}
+.rehy-sub b{color:var(--gold);}
+.repcap{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);}
+.repcap b{color:var(--text);font-size:13px;letter-spacing:0;}
+.repbar{display:flex;height:14px;border-radius:7px;overflow:hidden;border:1px solid var(--border);background:var(--surface);}
+.repbar-fill{flex-basis:65%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transition:flex-basis .6s cubic-bezier(.22,1,.36,1);}
+.repbar-rest{flex:1;background:repeating-linear-gradient(135deg,rgba(154,154,154,.22) 0 5px,transparent 5px 10px);}
+.repbar-key{display:flex;justify-content:space-between;gap:10px;margin-top:9px;font-size:12px;color:var(--text);}
+.repbar-key b{font-weight:700;}
+.repbar-key .k-drink b{color:var(--gold);}
+.repbar-key .k-rest{color:var(--muted);}
+.repbar-key .k-rest b{color:var(--muted);}
+.rehy-foot{margin-top:13px;font-size:12.5px;color:var(--muted);line-height:1.55;}
+.rehy-foot b{color:var(--text);}
 
 /* log table */
 .block{padding:30px 0 0;}
