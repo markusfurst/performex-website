@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="resources.css?v=4">
+<link rel="stylesheet" href="resources.css?v=5">
 </head>
 <body>
 
@@ -90,7 +90,7 @@
           </div>
           <div class="field">
             <label for="fluid">Fluid drunk <span class="opt">(optional)</span></label>
-            <div class="inpwrap"><input type="number" id="fluid" inputmode="decimal" step="1" placeholder="0"><span class="unit">oz</span></div>
+            <div class="inpwrap"><input type="number" id="fluid" inputmode="decimal" step="1" placeholder="0"><span class="unit" id="fluidUnit">oz</span></div>
           </div>
         </div>
         <div class="row2">
@@ -148,7 +148,8 @@
             <span class="k-drink">Drink <b id="sip">–</b>/hr now</span>
             <span class="k-rest">top up <b id="deficit">–</b> after</span>
           </div>
-          <p class="rehy-foot">That target is roughly <b>50–80%</b> of what you lose. Dial it in over a few sessions and keep total loss under ~2–3% of body weight.</p>
+          <p class="rehy-aim">Aim for the upper end, closer to <b id="aimNum">–</b> here, especially in heat or on longer sessions.</p>
+          <p class="rehy-foot">That target is roughly <b>65–80%</b> of what you lose. Dial it in over a few sessions and keep total loss under ~2–3% of body weight.</p>
         </div>
       </div>
     </div>
@@ -208,6 +209,7 @@
   function bandFor(r){let b=bands[0];for(const x of bands){if(r>=x.min)b=x;}return b;}
 
   const KG_TO_L = 1;             // 1 kg of body-mass loss ≈ 1 L fluid
+  const ML_TO_L = 0.001;
   const ins = ["pre","post","dur","fluid","temp","hum","lbl"].map($);
   let tests = [];
   let unit = "lb";               // weigh-in unit (lb | kg)
@@ -218,6 +220,7 @@
     $("kgBtn").classList.toggle("active", u==="kg");
     $("preUnit").textContent = u;
     $("postUnit").textContent = u;
+    $("fluidUnit").textContent = u==="kg" ? "ml" : "oz";
     compute();
   }
   $("lbBtn").addEventListener("click",()=>setUnit("lb"));
@@ -241,7 +244,7 @@
 
     const lostWt = pre - post;
     const lostL  = lostWt * (unit==="kg" ? KG_TO_L : LB_TO_L);
-    const drankL = fluid * OZ_TO_L;
+    const drankL = fluid * (unit==="kg" ? ML_TO_L : OZ_TO_L);
     const totalL = lostL + drankL;             // true sweat loss
     const rate   = totalL / (dur/60);          // L/hr
     const pctLost = pre>0 ? (lostWt/pre)*100 : 0;
@@ -277,14 +280,24 @@
     $("mlhr").textContent=Math.round(d.mlhr);
     $("lostpct").textContent=d.pctLost.toFixed(1)+"%";
 
-    const lo=Math.round(d.ozhr*0.5), hi=Math.round(d.ozhr*0.8);
-    const loss=Math.round(d.ozhr);
-    const fillPct=Math.max(8,Math.min(92,Math.round(((lo+hi)/2)/d.ozhr*100)));
+    const LO_F=0.65, HI_F=0.80;
+    const fillPct=Math.round(((LO_F+HI_F)/2)*100);
     $("rehy").style.display="block";
-    $("sip").textContent=lo+"–"+hi+" oz";
-    $("lossnum").textContent=loss+" oz/hr";
-    $("deficit").textContent=(loss-hi)+"–"+(loss-lo)+" oz";
     $("repFill").style.flexBasis=fillPct+"%";
+
+    if(unit==="kg"){
+      const L=d.rate, dLo=L*LO_F, dHi=L*HI_F;
+      $("lossnum").textContent=L.toFixed(2)+" L/hr";
+      $("sip").textContent=dLo.toFixed(2)+"–"+dHi.toFixed(2)+" L";
+      $("deficit").textContent=(L-dHi).toFixed(2)+"–"+(L-dLo).toFixed(2)+" L";
+      $("aimNum").textContent=dHi.toFixed(2)+" L/hr";
+    } else {
+      const oz=Math.round(d.ozhr), dLo=Math.round(d.ozhr*LO_F), dHi=Math.round(d.ozhr*HI_F);
+      $("lossnum").textContent=oz+" oz/hr";
+      $("sip").textContent=dLo+"–"+dHi+" oz";
+      $("deficit").textContent=(oz-dHi)+"–"+(oz-dLo)+" oz";
+      $("aimNum").textContent=dHi+" oz/hr";
+    }
   }
 
   function hexA(hex,a){const n=parseInt(hex.slice(1),16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;}
@@ -353,10 +366,10 @@
 
   $("export").addEventListener("click",()=>{
     if(!tests.length){alert("Nothing to export yet. Save a test first.");return;}
-    const head=["Test","Temp_F","Humidity_%","Duration_min","Weight_unit","Pre","Post","Fluid_oz","SweatRate_L_hr","SweatRate_oz_hr","BodyWtLost_%","Band"];
+    const head=["Test","Temp_F","Humidity_%","Duration_min","Weight_unit","Pre","Post","Fluid","Fluid_unit","SweatRate_L_hr","SweatRate_oz_hr","BodyWtLost_%","Band"];
     const rows=tests.map((t,i)=>[
       `"${(t.lbl||("Test "+(i+1))).replace(/"/g,'""')}"`,
-      t.temp??"", t.hum??"", t.dur, t.unit||"lb", t.pre, t.post, t.fluid,
+      t.temp??"", t.hum??"", t.dur, t.unit||"lb", t.pre, t.post, t.fluid, (t.unit==="kg"?"ml":"oz"),
       t.rate.toFixed(2), Math.round(t.rate/OZ_TO_L), t.pctLost.toFixed(1), bandFor(t.rate).label
     ].join(","));
     const csv=[head.join(","),...rows].join("\n");
