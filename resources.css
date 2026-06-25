@@ -477,6 +477,53 @@ tr.avg td{background:var(--surface-2);font-weight:700;color:var(--text);}
 .crosslink:hover .cl-go{transform:translate(2px,-2px);}
 .crosslink .cl-go{transition:transform .2s;}
 
+/* ─── RECOVERY GUIDE ────────────────────────────────────── */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 14px;}
+@media(max-width:760px){.timeline{grid-template-columns:1fr 1fr;}}
+@media(max-width:440px){.timeline{grid-template-columns:1fr;}}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:var(--radius);padding:18px 16px;}
+.tl-step{font-family:var(--font-main);font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;}
+.tl-time{font-family:var(--font-main);font-size:19px;font-weight:800;letter-spacing:-.02em;margin:8px 0 6px;}
+.tl-name{font-size:12px;font-weight:700;letter-spacing:.01em;margin-bottom:9px;color:var(--text);}
+.tl-desc{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
+.guide-p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.guide-p b{color:var(--text);}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:6px 0 4px;}
+@media(max-width:620px){.stat-row{grid-template-columns:1fr;}}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;text-align:center;}
+.stat .s-num{font-family:var(--font-main);font-size:42px;font-weight:800;letter-spacing:-1.5px;line-height:1;color:var(--gold);}
+.stat .s-lbl{font-size:12.5px;font-weight:700;color:var(--text);margin:11px 0 6px;}
+.stat .s-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+@media(max-width:680px){.two-col{grid-template-columns:1fr;}}
+.menu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;}
+.menu-card h3{font-family:var(--font-main);font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.menu-list{display:flex;flex-direction:column;gap:11px;}
+.menu-list li{position:relative;padding-left:22px;font-size:13.5px;color:var(--muted);line-height:1.5;}
+.menu-list li b{color:var(--text);font-weight:600;}
+.menu-list li .qty{color:var(--gold);font-weight:600;}
+.menu-list li::before{content:"";position:absolute;left:2px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+
+.plate-list{display:flex;flex-direction:column;gap:0;margin-top:4px;}
+.plate-row{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
+.plate-row:last-child{border-bottom:none;}
+.plate-pct{font-family:var(--font-main);font-size:16px;font-weight:800;color:var(--gold);flex:0 0 84px;letter-spacing:-.02em;}
+.plate-txt{font-size:13.5px;color:var(--muted);line-height:1.5;}
+.plate-txt b{color:var(--text);}
+
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+@media(max-width:600px){.ref-grid{grid-template-columns:1fr;}}
+.ref{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px 18px;}
+.ref h4{font-family:var(--font-main);font-size:13.5px;font-weight:800;color:var(--text);margin-bottom:6px;letter-spacing:-.01em;}
+.ref p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+.ref p i{font-style:italic;color:var(--muted-2);}
+
+.byline{font-size:12.5px;color:var(--muted-2);margin:-12px 0 26px;letter-spacing:.02em;}
+.byline b{color:var(--muted);font-weight:600;}
+
 /* ─── SWIM DRILL LIBRARY ────────────────────────────────── */
 .drill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px;}
 @media(max-width:860px){.drill-grid{grid-template-columns:1fr 1fr;}}
