@@ -358,17 +358,17 @@ ul { list-style: none; }
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--white);
-  animation: spots-text-pulse 2.4s ease-in-out 1.65s infinite;
+  animation: spots-text-pulse 2s ease-in-out 1.65s infinite;
 }
 
 @keyframes spots-text-pulse {
   0%, 100% {
-    opacity: 0.85;
+    opacity: 0.68;
     text-shadow: 0 0 0 rgba(245, 182, 20, 0);
   }
   50% {
     opacity: 1;
-    text-shadow: 0 0 16px rgba(245, 182, 20, 0.55);
+    text-shadow: 0 0 24px rgba(245, 182, 20, 0.85);
   }
 }
 
