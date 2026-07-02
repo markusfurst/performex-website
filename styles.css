@@ -341,32 +341,32 @@ ul { list-style: none; }
 
 .hero-spots {
   display: inline-block;
-  background: rgba(245, 182, 20, 0.10);
-  border: 1px solid rgba(245, 182, 20, 0.4);
-  border-radius: 14px;
-  padding: 12px 20px;
-  margin-bottom: 28px;
+  background: rgba(245, 182, 20, 0.16);
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  padding: 13px 26px;
+  margin: 0 auto 40px;
   animation:
-    eyebrow-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both,
-    spots-box-pulse 2.6s ease-in-out 1s infinite;
+    eyebrow-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both,
+    spots-box-pulse 2.4s ease-in-out 1.55s infinite;
 }
 
 @keyframes spots-box-pulse {
   0%, 100% {
     box-shadow: 0 0 0 0 rgba(245, 182, 20, 0);
-    border-color: rgba(245, 182, 20, 0.35);
+    border-color: rgba(245, 182, 20, 0.55);
   }
   50% {
-    box-shadow: 0 0 18px 1px rgba(245, 182, 20, 0.28);
-    border-color: rgba(245, 182, 20, 0.85);
+    box-shadow: 0 0 24px 3px rgba(245, 182, 20, 0.45);
+    border-color: rgba(245, 182, 20, 1);
   }
 }
 
 .hero-spots-label {
   font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
 }
@@ -1207,7 +1207,8 @@ blockquote {
   .hero-content { padding: 100px 20px 110px; }
   .hero-sub { font-size: 16px; }
   .hero-headline { font-size: clamp(30px, 10vw, 52px); }
-  .hero-spots { max-width: 100%; }
+  .hero-spots { max-width: 100%; padding: 11px 18px; }
+  .hero-spots-label { font-size: 12.5px; letter-spacing: 0.1em; }
   .hero-image-wrap { width: 100%; opacity: 1; }
   .hero-image-overlay {
     background:
