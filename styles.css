@@ -341,19 +341,19 @@ ul { list-style: none; }
 
 .hero-spots {
   display: inline-block;
-  margin: 0 auto 40px;
-  animation: eyebrow-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
+  margin: 34px auto 0;
+  animation: eyebrow-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
 }
 
 .hero-spots-label {
   display: inline-block;
   font-family: var(--font-main);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  animation: spots-text-pulse 2.4s ease-in-out 1.55s infinite;
+  animation: spots-text-pulse 2.4s ease-in-out 1.65s infinite;
 }
 
 @keyframes spots-text-pulse {
@@ -368,8 +368,9 @@ ul { list-style: none; }
 }
 
 .hero-spots-label b {
-  color: inherit;
+  color: var(--white);
   font-weight: 800;
+  font-size: 1.15em;
 }
 
 .hero-headline {
@@ -1203,7 +1204,7 @@ blockquote {
   .hero-content { padding: 100px 20px 110px; }
   .hero-sub { font-size: 16px; }
   .hero-headline { font-size: clamp(30px, 10vw, 52px); }
-  .hero-spots-label { font-size: 13px; letter-spacing: 0.14em; }
+  .hero-spots-label { font-size: 15px; letter-spacing: 0.14em; }
   .hero-image-wrap { width: 100%; opacity: 1; }
   .hero-image-overlay {
     background:
