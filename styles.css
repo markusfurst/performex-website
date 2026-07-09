@@ -1112,7 +1112,8 @@ blockquote {
 /* ─── FOOTER ─────────────────────────────────────────────── */
 .footer {
   background: var(--black);
-  padding: 80px 0 40px;
+  /* extra bottom padding so the fixed "First 2 weeks free" button never covers footer text */
+  padding: 80px 0 96px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
