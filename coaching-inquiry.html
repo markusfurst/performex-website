@@ -46,10 +46,8 @@ a{color:inherit;text-decoration:none;}
 .wrap{max-width:560px;margin:0 auto;padding:26px 18px 44px;}
 
 /* ─── Brand / header ─────────────────────────────────────── */
-.brand{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:26px;}
-.brand-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold);}
-.brand-name{font-family:var(--font-main);font-weight:800;letter-spacing:.02em;font-size:16px;}
-.brand-name span{color:var(--gold);}
+.brand{display:flex;align-items:center;justify-content:center;margin-bottom:26px;}
+.brand img{height:46px;width:46px;display:block;filter:brightness(0) invert(1);}
 
 .head{text-align:center;margin-bottom:24px;}
 .eyebrow{
@@ -153,10 +151,9 @@ input[type="number"]{-moz-appearance:textfield;}
 <body>
 <main class="wrap">
 
-  <div class="brand">
-    <span class="brand-dot"></span>
-    <span class="brand-name">PERFOR<span>MEX</span></span>
-  </div>
+  <a class="brand" href="/" aria-label="Performex Coaching">
+    <img src="favicon.png" alt="Performex" width="512" height="512">
+  </a>
 
   <!-- ══ FORM ══ -->
   <div id="formView">
