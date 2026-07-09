@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Coaching Inquiry - Performex</title>
+<meta name="description" content="Apply for personal endurance coaching with Performex. Tell me about your goals and I'll be in touch.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18036804143"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18036804143');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PERFORMEX - Coaching Inquiry (lead-gen form)
+   Self-contained. Black + gold. Mobile-first.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --bg:#0a0a0a; --surface:#141414; --surface-2:#1c1c1c; --surface-3:#242424;
+  --border:#2a2a2a; --border-soft:#222;
+  --gold:#f5b614; --gold-dark:#d49f0e; --gold-soft:rgba(245,182,20,.12); --gold-line:rgba(245,182,20,.35);
+  --text:#f2f2f2; --muted:#9a9a9a; --muted-2:#6c6c6c; --danger:#ff5a5a;
+  --font-main:'Manrope',sans-serif; --font-body:'Inter',sans-serif;
+  --radius:16px; --radius-md:12px; --radius-sm:10px;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;background:var(--bg);}
+body{
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(245,182,20,.10), transparent 60%),
+    var(--bg);
+  color:var(--text); font-family:var(--font-body); line-height:1.5;
+  -webkit-font-smoothing:antialiased; min-height:100vh;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:560px;margin:0 auto;padding:26px 18px 44px;}
+
+/* ─── Brand / header ─────────────────────────────────────── */
+.brand{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:26px;}
+.brand-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold);}
+.brand-name{font-family:var(--font-main);font-weight:800;letter-spacing:.02em;font-size:16px;}
+.brand-name span{color:var(--gold);}
+
+.head{text-align:center;margin-bottom:24px;}
+.eyebrow{
+  display:inline-block;font-family:var(--font-main);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+}
+h1{font-family:var(--font-main);font-weight:800;letter-spacing:-.03em;font-size:clamp(26px,7vw,34px);line-height:1.08;margin-bottom:12px;}
+.lede{color:var(--muted);font-size:15px;line-height:1.6;max-width:42ch;margin:0 auto;}
+.lede b{color:var(--text);font-weight:600;}
+
+/* ─── Form card ──────────────────────────────────────────── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 16px;}
+.field{margin-bottom:22px;}
+.field:last-of-type{margin-bottom:8px;}
+label.q{
+  display:block;font-family:var(--font-main);font-size:14.5px;font-weight:700;
+  letter-spacing:-.01em;color:var(--text);margin-bottom:10px;line-height:1.35;
+}
+label.q .opt{font-family:var(--font-body);font-weight:500;font-size:12.5px;color:var(--muted-2);letter-spacing:0;}
+label.q .req{color:var(--gold);margin-left:2px;}
+
+/* text inputs */
+input[type="text"],input[type="email"],input[type="tel"],input[type="number"],textarea{
+  width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--text);font-size:16px;font-family:inherit;line-height:1.45;
+  padding:14px 14px;appearance:none;-webkit-appearance:none;outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+textarea{min-height:96px;resize:vertical;}
+input::placeholder,textarea::placeholder{color:var(--muted-2);}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type="number"]{-moz-appearance:textfield;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:420px){.grid-2{grid-template-columns:1fr;}}
+
+/* choice chips (big tap targets, one tap) */
+.choices{display:flex;flex-direction:column;gap:8px;}
+.choices.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:420px){.choices.two-col{grid-template-columns:1fr;}}
+.choice{position:relative;display:block;cursor:pointer;}
+.choice input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+.choice span{
+  display:flex;align-items:center;gap:11px;min-height:52px;
+  background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:12px 14px;font-size:15px;font-weight:500;color:var(--text);
+  transition:border-color .15s,background .15s;
+}
+.choice span::before{
+  content:"";flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--muted-2);transition:border-color .15s,box-shadow .15s,background .15s;
+}
+.choice input:checked+span{border-color:var(--gold-line);background:var(--gold-soft);}
+.choice input:checked+span::before{border-color:var(--gold);background:var(--gold);box-shadow:inset 0 0 0 4px var(--surface-2);}
+.choice input:focus-visible+span{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);}
+
+.conditional{margin-top:10px;display:none;}
+.conditional.show{display:block;animation:fade .2s var(--ease-out);}
+@keyframes fade{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+
+.err{display:none;color:var(--danger);font-size:12.5px;font-weight:500;margin-top:8px;}
+.field.invalid .err{display:block;}
+.field.invalid input,.field.invalid textarea{border-color:var(--danger);}
+
+/* submit */
+.submit-wrap{margin-top:18px;}
+.btn{
+  width:100%;font-family:var(--font-main);font-weight:800;font-size:16px;letter-spacing:.01em;
+  background:var(--gold);color:#000;border:none;border-radius:var(--radius-sm);
+  padding:17px 18px;cursor:pointer;transition:background .15s,transform .08s,opacity .15s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.btn:hover{background:var(--gold-dark);}
+.btn:active{transform:translateY(1px);}
+.btn[disabled]{opacity:.65;cursor:default;}
+.btn .spin{width:18px;height:18px;border:2.5px solid rgba(0,0,0,.35);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite;display:none;}
+.btn.loading .spin{display:inline-block;}
+.btn.loading .btn-label{opacity:.8;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.privacy{text-align:center;color:var(--muted-2);font-size:12px;line-height:1.55;margin-top:14px;}
+.form-error{display:none;text-align:center;color:var(--danger);font-size:13.5px;margin-top:12px;line-height:1.5;}
+
+/* ─── Thank-you state ────────────────────────────────────── */
+.thanks{display:none;text-align:center;padding:14px 6px 8px;animation:fade .35s var(--ease-out);}
+.thanks.show{display:block;}
+.thanks .check{
+  width:76px;height:76px;border-radius:50%;margin:0 auto 22px;
+  background:var(--gold-soft);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;color:var(--gold);
+}
+.thanks h2{font-family:var(--font-main);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,6vw,30px);margin-bottom:14px;}
+.thanks p{color:var(--muted);font-size:15.5px;line-height:1.65;max-width:38ch;margin:0 auto 14px;}
+.thanks p b{color:var(--text);font-weight:600;}
+.thanks .home{display:inline-block;margin-top:12px;font-family:var(--font-main);font-weight:700;font-size:14px;color:var(--gold);}
+
+.foot{margin-top:26px;text-align:center;color:var(--muted-2);font-size:11.5px;line-height:1.7;}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <div class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">PERFOR<span>MEX</span></span>
+  </div>
+
+  <!-- ══ FORM ══ -->
+  <div id="formView">
+    <div class="head">
+      <span class="eyebrow">Personal Coaching</span>
+      <h1>Start your coaching journey</h1>
+      <p class="lede">Answer a few quick questions and I'll personally review your goals and get back to you within <b>24–48 hours</b>.</p>
+    </div>
+
+    <form id="leadForm" class="card" novalidate>
+
+      <!-- Name -->
+      <div class="field" data-field>
+        <label class="q" for="name">Name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
+        <div class="err">Please enter your name.</div>
+      </div>
+
+      <!-- Email + Phone -->
+      <div class="field" data-field>
+        <label class="q" for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required>
+        <div class="err">Please enter a valid email.</div>
+      </div>
+
+      <div class="field" data-field>
+        <label class="q" for="phone">Phone / WhatsApp <span class="opt">(optional - for faster follow-up)</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+41 ...">
+      </div>
+
+      <!-- Age + Location -->
+      <div class="grid-2">
+        <div class="field" data-field>
+          <label class="q" for="age">Age <span class="req">*</span></label>
+          <input type="number" id="age" name="age" inputmode="numeric" min="10" max="100" placeholder="e.g. 34" required>
+          <div class="err">Please enter your age.</div>
+        </div>
+        <div class="field" data-field>
+          <label class="q" for="location">Location <span class="req">*</span></label>
+          <input type="text" id="location" name="location" autocomplete="address-level2" placeholder="City, Country" required>
+          <div class="err">Please enter your location.</div>
+        </div>
+      </div>
+
+      <!-- Training for -->
+      <div class="field" data-field data-group="training_for">
+        <label class="q">What are you training for? <span class="req">*</span></label>
+        <div class="choices two-col">
+          <label class="choice"><input type="radio" name="training_for" value="Ironman / Triathlon" required><span>Ironman / Tri</span></label>
+          <label class="choice"><input type="radio" name="training_for" value="Marathon"><span>Marathon</span></label>
+          <label class="choice"><input type="radio" name="training_for" value="Ultramarathon"><span>Ultramarathon</span></label>
+          <label class="choice"><input type="radio" name="training_for" value="Hybrid"><span>Hybrid</span></label>
+          <label class="choice"><input type="radio" name="training_for" value="Cycling"><span>Cycling</span></label>
+          <label class="choice"><input type="radio" name="training_for" value="Other"><span>Other</span></label>
+        </div>
+        <div class="conditional" id="trainingForOtherWrap">
+          <input type="text" name="training_for_other" placeholder="Tell me what you're training for">
+        </div>
+        <div class="err">Please pick one.</div>
+      </div>
+
+      <!-- Training duration -->
+      <div class="field" data-field data-group="experience">
+        <label class="q">How long have you been training consistently? <span class="req">*</span></label>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="experience" value="Less than a year" required><span>Less than a year</span></label>
+          <label class="choice"><input type="radio" name="experience" value="1–3 years"><span>1–3 years</span></label>
+          <label class="choice"><input type="radio" name="experience" value="3+ years"><span>3+ years</span></label>
+        </div>
+        <div class="err">Please pick one.</div>
+      </div>
+
+      <!-- Goals -->
+      <div class="field" data-field>
+        <label class="q" for="goals">What are your goals? <span class="req">*</span></label>
+        <textarea id="goals" name="goals" placeholder="Your target race, time goal, or what you want to achieve" required></textarea>
+        <div class="err">Please share your goals.</div>
+      </div>
+
+      <!-- Background (optional to keep it fast) -->
+      <div class="field" data-field>
+        <label class="q" for="background">A bit about you &amp; your training background <span class="opt">(optional)</span></label>
+        <textarea id="background" name="background" placeholder="Current weekly hours, sports background, injuries, anything useful"></textarea>
+      </div>
+
+      <!-- How did you hear -->
+      <div class="field" data-field data-group="source">
+        <label class="q">How did you hear about me? <span class="req">*</span></label>
+        <div class="choices two-col">
+          <label class="choice"><input type="radio" name="source" value="Social Media" required><span>Social Media</span></label>
+          <label class="choice"><input type="radio" name="source" value="Google"><span>Google</span></label>
+          <label class="choice"><input type="radio" name="source" value="Referral"><span>Referral</span></label>
+          <label class="choice"><input type="radio" name="source" value="Other"><span>Other</span></label>
+        </div>
+        <div class="err">Please pick one.</div>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn" id="submitBtn">
+          <span class="spin"></span>
+          <span class="btn-label">Send my inquiry</span>
+        </button>
+        <p class="privacy">Your details go straight to me. No spam, ever.</p>
+        <p class="form-error" id="formError">Something went wrong sending your inquiry. Please try again, or email me directly.</p>
+      </div>
+    </form>
+  </div>
+
+  <!-- ══ THANK-YOU STATE (no redirect - conversion fires here) ══ -->
+  <div id="thanksView" class="thanks">
+    <div class="check">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h2 id="thanksTitle">Thank you!</h2>
+    <p>I've got your inquiry and a confirmation is on its way to your inbox. I'll personally review your goals and <b>reach out within 24–48 hours</b>.</p>
+    <p style="font-size:14px;color:var(--muted-2)">In the meantime, keep an eye on your email (and check spam just in case).</p>
+    <a class="home" href="/">← Back to Performex</a>
+  </div>
+
+  <p class="foot">© Performex Coaching</p>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CONFIG - paste your Apps Script Web App /exec URL here
+   ═══════════════════════════════════════════════════════════ */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzzc8N4WgtHbsHfIIILeb3WGCsTEYaY3FMV82TG_2gDv4m_c78KKXmghCrDqCVGxy86pg/exec";
+
+(function(){
+  const form = document.getElementById('leadForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formError = document.getElementById('formError');
+  const formView = document.getElementById('formView');
+  const thanksView = document.getElementById('thanksView');
+
+  /* conditional "Other" text box for "What are you training for?" */
+  const otherWrap = document.getElementById('trainingForOtherWrap');
+  form.querySelectorAll('input[name="training_for"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      const isOther = form.querySelector('input[name="training_for"]:checked')?.value === 'Other';
+      otherWrap.classList.toggle('show', isOther);
+      if(isOther){ otherWrap.querySelector('input').focus(); }
+    });
+  });
+
+  /* clear a field's error state as the user fixes it */
+  form.querySelectorAll('input,textarea').forEach(function(el){
+    el.addEventListener('input', function(){ el.closest('[data-field]')?.classList.remove('invalid'); });
+    el.addEventListener('change', function(){ el.closest('[data-field]')?.classList.remove('invalid'); });
+  });
+
+  function validate(){
+    let firstBad = null;
+    form.querySelectorAll('[data-field]').forEach(function(field){
+      field.classList.remove('invalid');
+      let bad = false;
+      const group = field.getAttribute('data-group');
+      if(group){
+        // radio group
+        bad = !form.querySelector('input[name="'+group+'"]:checked');
+      } else {
+        const el = field.querySelector('input,textarea');
+        if(el && el.hasAttribute('required')){
+          if(!el.value.trim()) bad = true;
+          else if(el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())) bad = true;
+        }
+      }
+      if(bad){ field.classList.add('invalid'); if(!firstBad) firstBad = field; }
+    });
+    if(firstBad){
+      firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      const focusable = firstBad.querySelector('input,textarea');
+      if(focusable) setTimeout(function(){ focusable.focus({preventScroll:true}); }, 300);
+    }
+    return !firstBad;
+  }
+
+  function showThankYou(name){
+    // hide form, reveal on-page confirmation (NO redirect)
+    formView.style.display = 'none';
+    if(name){ document.getElementById('thanksTitle').textContent = 'Thank you, ' + name + '!'; }
+    thanksView.classList.add('show');
+    window.scrollTo({top:0, behavior:'smooth'});
+
+    /* ─────────────────────────────────────────────────────────
+       GOOGLE ADS CONVERSION - fires on the thank-you state.
+       Uses the "Submit lead form" conversion action from the main site.
+       ───────────────────────────────────────────────────────── */
+    if(typeof gtag === 'function'){
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18036804143/5OFmCJPerI4cEK-Uz5hD',
+        'value': 1.0,
+        'currency': 'USD'
+      });
+    }
+    // If you use Google Tag Manager instead, push a dataLayer event here:
+    // window.dataLayer = window.dataLayer || [];
+    // window.dataLayer.push({ 'event': 'lead_form_submit' });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    formError.style.display = 'none';
+    if(!validate()) return;
+
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+
+    const data = new URLSearchParams();
+    new FormData(form).forEach(function(v,k){ data.append(k, v); });
+    data.append('page_url', window.location.href);
+
+    // Apps Script /exec redirects on POST, which the browser blocks JS from
+    // reading (CORS). We send with mode:'no-cors' so the request still reaches
+    // the script (row logged + emails sent); the response is opaque, so we
+    // treat a completed send as success and show the thank-you state.
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data // application/x-www-form-urlencoded → simple request, no CORS preflight
+    })
+    .then(function(){
+      showThankYou((data.get('name')||'').trim().split(' ')[0]);
+    })
+    .catch(function(err){
+      console.error('Lead submit failed:', err);
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      formError.style.display = 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>
