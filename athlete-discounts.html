@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="data:,">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Athlete Discounts - Performex Coaching</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resources.css?v=7">
+<style>
+  .disc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;}
+  .disc-card{
+    display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:22px 20px;
+    transition:border-color .18s,transform .18s,box-shadow .18s;
+  }
+  .disc-card:hover{border-color:var(--gold-line);transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.4);}
+  .disc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;}
+  .disc-name{font-family:var(--font-main);font-weight:800;letter-spacing:-.02em;font-size:20px;line-height:1.15;}
+  .disc-badge{
+    flex:0 0 auto;font-family:var(--font-main);font-size:12px;font-weight:800;
+    letter-spacing:.01em;color:var(--gold);background:var(--gold-soft);
+    border:1px solid var(--gold-line);border-radius:999px;padding:5px 11px;white-space:nowrap;
+  }
+  .disc-desc{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:16px;}
+  .disc-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+  .disc-row{display:flex;align-items:center;gap:10px;font-size:13px;}
+  .disc-row .k{
+    flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted-2);min-width:72px;
+  }
+  .disc-code{
+    font-family:var(--font-main);font-weight:700;font-size:13.5px;color:var(--text);
+    background:var(--surface-2);border:1px dashed var(--border);border-radius:8px;
+    padding:5px 10px;letter-spacing:.02em;
+  }
+  .disc-note{color:var(--muted);}
+  .disc-go{
+    margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:var(--font-main);font-size:14px;font-weight:700;
+    background:var(--gold);color:var(--black);border-radius:11px;padding:12px 16px;
+    transition:background .15s;
+  }
+  .disc-go:hover{background:var(--gold-dark);}
+  .disc-go svg{transition:transform .15s;}
+  .disc-card:hover .disc-go svg{transform:translate(3px,-3px);}
+  @media(max-width:720px){
+    .disc-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-logo"><img src="header.png" alt="Performex Coaching"></a>
+    <a href="resources.html" class="site-nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      All resources
+    </a>
+  </div>
+</nav>
+
+<main class="wrap-wide">
+
+  <span class="eyebrow">Athlete Discounts</span>
+  <h1 class="tool-title">Partner discounts for Performex athletes</h1>
+  <p class="tool-sub tool-sub-wide">A handful of brands I trust and use myself, with a discount for athletes I coach. Codes and links are below. Where a discount applies automatically, it will show up at checkout.</p>
+
+  <section class="disc-grid">
+
+    <article class="disc-card">
+      <div class="disc-head">
+        <h2 class="disc-name">The Feed</h2>
+        <span class="disc-badge">10% off</span>
+      </div>
+      <p class="disc-desc">Everything you need to fuel your training and racing, from nutrition and supplements to hydration and recovery products.</p>
+      <div class="disc-meta">
+        <div class="disc-row"><span class="k">Discount</span><span class="disc-note">Applied automatically at checkout.</span></div>
+      </div>
+      <a class="disc-go" href="https://rstr.co/the-feed/furst" target="_blank" rel="noopener noreferrer">Shop The Feed
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </article>
+
+    <article class="disc-card">
+      <div class="disc-head">
+        <h2 class="disc-name">A2 Bikes</h2>
+        <span class="disc-badge">5% off</span>
+      </div>
+      <p class="disc-desc">A performance-focused triathlon bike company built for speed, aerodynamics, and race-day efficiency without the premium price tag.</p>
+      <div class="disc-meta">
+        <div class="disc-row"><span class="k">Code</span><span class="disc-code">Markus2026</span></div>
+      </div>
+      <a class="disc-go" href="https://a2bikes.com/" target="_blank" rel="noopener noreferrer">Visit A2 Bikes
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </article>
+
+    <article class="disc-card">
+      <div class="disc-head">
+        <h2 class="disc-name">The Magic 5</h2>
+        <span class="disc-badge">30–50% off</span>
+      </div>
+      <p class="disc-desc">Custom-fit swim goggles created from a 3D scan of your face, designed to provide a leak-free fit, improved comfort, and fewer distractions on race day.</p>
+      <div class="disc-meta">
+        <div class="disc-row"><span class="k">Password</span><span class="disc-code">performexcoaching</span></div>
+      </div>
+      <a class="disc-go" href="https://themagic5.com/collections/club-partnership" target="_blank" rel="noopener noreferrer">Get fitted
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </article>
+
+    <article class="disc-card">
+      <div class="disc-head">
+        <h2 class="disc-name">Intake Breathing</h2>
+        <span class="disc-badge">20% off</span>
+      </div>
+      <p class="disc-desc">A performance breathing device designed to improve breathing and endurance, and enhance overall aerobic capacity.</p>
+      <div class="disc-meta">
+        <div class="disc-row"><span class="k">Discount</span><span class="disc-note">Applied automatically at checkout.</span></div>
+      </div>
+      <a class="disc-go" href="https://www.intakebreathing.com/" target="_blank" rel="noopener noreferrer">Visit Intake
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </article>
+
+  </section>
+
+  <footer class="tool-foot">
+    <p>Discounts and codes are set by each partner and can change without notice. If a code does not work, reach out and I will get it sorted.</p>
+    <p class="brandline">PerformEX Coaching · for athlete use</p>
+  </footer>
+
+</main>
+
+</body>
+</html>
