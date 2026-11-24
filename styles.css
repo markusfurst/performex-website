@@ -676,6 +676,11 @@ ul { list-style: none; }
   display: block;
 }
 
+/* Philosophy slide: portrait photo, keep the face in frame */
+.about-slide-image[data-slide="2"] img {
+  object-position: center top;
+}
+
 
 /* ── Progress dots (bottom of text panel) ── */
 .about-progress {

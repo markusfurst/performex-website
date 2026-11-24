@@ -120,8 +120,17 @@ fadeEls.forEach(el => observer.observe(el));
   }
 
   function update() {
-    // Skip scroll-driven logic on mobile; CSS handles the static fallback
-    if (window.innerWidth <= 809) return;
+    // Skip scroll-driven logic on mobile; CSS handles the static fallback.
+    // Clear any inline styles the desktop crossfade left behind so they don't
+    // override the mobile CSS (otherwise a stale opacity can hide the image).
+    if (window.innerWidth <= 809) {
+      [...textSlides, ...imgSlides].forEach((el) => {
+        el.style.opacity = '';
+        el.style.transform = '';
+        el.style.pointerEvents = '';
+      });
+      return;
+    }
 
     const vh       = window.innerHeight;
     const rect     = section.getBoundingClientRect();
